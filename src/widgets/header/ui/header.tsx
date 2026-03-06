@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { SearchAnime } from '@/features/search-anime'
 import { SwitchTheme } from '@/features/switch-theme'
 import { Button, Container } from '@/shared/ui'
@@ -11,7 +13,9 @@ export const Header = () => {
         <HeaderLogo />
         <SearchAnime />
         <div className={'flex items-center gap-4'}>
-          <Button>Авторизация</Button>
+          <Link href={'/auth'}>
+            <Button className={'cursor-pointer'}>Авторизация</Button>
+          </Link>
           <SwitchTheme />
         </div>
       </Container>
