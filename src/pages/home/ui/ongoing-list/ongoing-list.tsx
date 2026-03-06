@@ -13,7 +13,7 @@ export const OngoingList = () => {
   const ongoings = data?.response.slice(1, 7) || []
 
   return (
-    <>
+    <div>
       <Link
         href={'/ongoings'}
         className={
@@ -24,6 +24,6 @@ export const OngoingList = () => {
         <ChevronRight height={14} width={14} />
       </Link>
       <OngoingItems ongoings={ongoings} />
-    </>
+    </div>
   )
 }
