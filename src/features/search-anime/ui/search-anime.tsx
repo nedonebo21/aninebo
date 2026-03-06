@@ -1,23 +1,25 @@
 'use client'
 
-import { Search } from 'lucide-react'
-import Link from 'next/link'
+import { Search, XIcon } from 'lucide-react'
 import { useRef, useState } from 'react'
 import { useClickAway } from 'react-use'
 
-import { useAnimeSearch } from '@/features/search-anime/api/use-anime-search'
+import { useAnimeSearch } from '@/features/search-anime/api'
 import { useDebounce } from '@/shared/lib'
-import { cn } from '@/shared/lib/utils'
 import { Input } from '@/shared/ui'
+
+import { SearchSuggestions } from './search-suggestions'
 
 export const SearchAnime = () => {
   const [search, setSearch] = useState('')
 
   const [focused, setFocused] = useState(false)
 
-  const ref = useRef(null)
-
   const debouncedSearch = useDebounce(search, 500)
+
+  const { data, isLoading, isFetching, error } = useAnimeSearch(debouncedSearch)
+
+  const ref = useRef(null)
 
   const handleFocusOn = () => {
     setFocused(true)
@@ -31,9 +33,13 @@ export const SearchAnime = () => {
     setFocused(false)
   })
 
-  const { data: searchedAnime, isLoading, isFetching, error } = useAnimeSearch(debouncedSearch)
+  const isCleared = search.length > 0
 
-  const displayedAnime = searchedAnime?.slice(0, 8) ?? []
+  const handleSearchClear = () => {
+    setSearch('')
+  }
+
+  const searchedAnime = data?.response || []
 
   return (
     <>
@@ -50,39 +56,21 @@ export const SearchAnime = () => {
           onChange={e => setSearch(e.target.value)}
           className={'rounded-2xl outline-none w-full pl-11'}
         />
+        {isCleared && (
+          <XIcon
+            onClick={handleSearchClear}
+            className={
+              'absolute top-1/2 translate-y-[-50%] right-3 h-5 text-gray-400 hover:text-green-800 cursor-pointer transition-all'
+            }
+          />
+        )}
       </div>
 
-      {displayedAnime.length ? (
-        <div
-          className={cn(
-            'absolute w-[730px] left-1/3 rounded-xl py-2 top-14 shadow-md transition-all duration-200 invisible opacity-0 z-30',
-            focused && 'visible opacity-100 top-22 bg-secondary'
-          )}
-        >
-          {displayedAnime.map(anime => (
-            <Link
-              key={anime.id}
-              href={`/anime/${anime.id}`}
-              className={'flex items-center gap-3 px-3 py-2 hover:bg-primary/10 cursor-pointer'}
-              onClick={handleItemClick}
-            >
-              <div className={'flex items-center gap-2'}>
-                <img
-                  src={`https://anilibria.tv${anime.poster?.preview}`}
-                  alt={anime.name.main}
-                  className={'rounded-sm h-8'}
-                />
-                <span className={'font-medium'}>{anime.name.main}</span>
-                <span className={'text-sm mt-[2px] text-muted-foreground'}>
-                  {anime.year} • {anime.type.value}
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      ) : (
-        debouncedSearch && <div>Ничего не найдено</div>
-      )}
+      <SearchSuggestions
+        searchedAnime={searchedAnime}
+        onItemClick={handleItemClick}
+        focused={focused}
+      />
     </>
   )
 }
