@@ -1,0 +1,1 @@
+export { SearchAnimeResponse } from './types'
