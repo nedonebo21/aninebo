@@ -8,7 +8,7 @@ import { useAnimeOngoings } from '@/entities/anime'
 import { OngoingItems } from './ongoing-items'
 
 export const OngoingList = () => {
-  const { data, isLoading, error } = useAnimeOngoings()
+  const { data } = useAnimeOngoings()
 
   const ongoings = data?.response.slice(1, 7) || []
 

@@ -17,7 +17,7 @@ export const SearchAnime = () => {
 
   const debouncedSearch = useDebounce(search, 500)
 
-  const { data, isLoading, isFetching, error } = useAnimeSearch(debouncedSearch)
+  const { data } = useAnimeSearch(debouncedSearch)
 
   const ref = useRef(null)
 

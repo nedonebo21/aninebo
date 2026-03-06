@@ -1,3 +1,12 @@
 import baseConfig from '@nedonebo21/eslint-config'
 
-export default baseConfig
+const config = [
+  ...baseConfig,
+  {
+    rules: {
+      '@next/next/no-img-element': 'off',
+    },
+  },
+]
+
+export default config
