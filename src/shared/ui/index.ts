@@ -1,3 +1,4 @@
 export * from './shadcn'
 export { Container } from './container'
 export { NavBar } from './navbar'
+export { ClearButton } from './clear-button'
