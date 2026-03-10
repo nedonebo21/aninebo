@@ -1,6 +1,7 @@
 'use client'
 
 import NextTopLoader from 'nextjs-toploader'
+import { Toaster } from 'react-hot-toast'
 
 import { QueryProvider } from './query-provider'
 import { ThemeProvider } from './theme-provider'
@@ -20,6 +21,7 @@ export const Providers = ({ children }: { children: ReactNode }) => {
           {children}
         </ThemeProvider>
       </QueryProvider>
+      <Toaster />
       <NextTopLoader />
     </>
   )
