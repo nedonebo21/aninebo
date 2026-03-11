@@ -25,7 +25,7 @@ export const SearchSuggestions = ({
     hasAnime && (
       <div
         className={cn(
-          'absolute w-[730px] left-1/3 rounded-xl py-2 top-14 shadow-md transition-all duration-200 invisible opacity-0 z-30',
+          'absolute w-[730px] left-1/3 rounded-xl top-14 shadow-md transition-all duration-200 invisible opacity-0 z-30',
           focused && 'visible opacity-100 top-22 bg-secondary'
         )}
       >
@@ -33,7 +33,9 @@ export const SearchSuggestions = ({
           <Link
             key={anime.anime_id}
             href={`/anime/${anime.anime_id}`}
-            className={'flex items-center gap-3 px-3 py-2 hover:bg-green-800 cursor-pointer'}
+            className={
+              'flex items-center gap-3 px-3 py-2 hover:bg-green-800 rounded-xl cursor-pointer'
+            }
             onClick={handleItemClick}
           >
             <div className={'flex items-center gap-2'}>
