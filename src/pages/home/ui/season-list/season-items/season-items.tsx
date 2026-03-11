@@ -3,7 +3,7 @@ import { SeasonItem } from './season-item'
 import type { Anime } from '@/entities/anime/model/types'
 
 type SeasonItemsProps = {
-  anime: Anime[]
+  anime: Anime[] | []
 }
 export const SeasonItems = ({ anime }: SeasonItemsProps) => {
   return (

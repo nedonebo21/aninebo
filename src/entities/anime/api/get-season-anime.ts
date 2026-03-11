@@ -25,7 +25,8 @@ const getAnimeBySeason = async ({
 
 export function useAnimeBySeason(season: AnimeSeasons, limit: number = 6) {
   return useQuery<AnimeBySeasonResponse>({
-    queryKey: ['anime'],
+    queryKey: ['anime', 'season'],
     queryFn: () => getAnimeBySeason({ season, limit }),
+    staleTime: 1000 * 60 * 60,
   })
 }
