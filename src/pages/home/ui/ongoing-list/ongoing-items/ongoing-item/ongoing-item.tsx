@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { truncate } from '@/shared/lib'
+import { Typography } from '@/shared/ui'
 
 import type { AnimeOngoingsResponse } from '@/entities/anime'
 
@@ -19,11 +20,15 @@ export const OngoingItem = ({ ongoing }: OngoingItemProps) => {
           <img className={'w-full h-[240px]'} src={ongoing.poster.medium} alt={'releaseLogo'} />
         </div>
         <div className={'flex flex-col p-1'}>
-          <strong className={'text-sm'}>{truncate(ongoing.title)}</strong>
-          <span className={'text-sm flex items-center gap-1'}>
+          <Typography as={'span'} variant={'bodyBold'} className={'text-sm'}>
+            {truncate(ongoing.title)}
+          </Typography>
+          <Typography as={'span'} className={'text-sm flex items-center gap-1'}>
             Эпизоды:
-            <span className={'text-green-600 text-sm'}>{ongoing.episodes.aired}</span>
-          </span>
+            <Typography as={'span'} variant={'bodyNormal'} className={'text-green-600 text-sm'}>
+              {ongoing.episodes.aired}
+            </Typography>
+          </Typography>
         </div>
       </Link>
     </div>

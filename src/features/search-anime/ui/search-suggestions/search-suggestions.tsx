@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { cn } from '@/shared/lib/utils'
+import { Typography } from '@/shared/ui'
 
 import type { SearchAnimeResponse } from '@/features/search-anime/model'
 
@@ -37,10 +38,16 @@ export const SearchSuggestions = ({
           >
             <div className={'flex items-center gap-2'}>
               <img src={anime.poster.small} alt={anime.title} className={'rounded-sm h-8'} />
-              <span className={'font-medium'}>{anime.title}</span>
-              <span className={'text-sm mt-[2px] text-muted-foreground'}>
+              <Typography as={'span'} variant={'bodyNormal'} className={'font-medium'}>
+                {anime.title}
+              </Typography>
+              <Typography
+                as={'span'}
+                variant={'bodyNormal'}
+                className={'text-sm mt-[2px] text-muted-foreground'}
+              >
                 {anime.year} • {anime.type.name}
-              </span>
+              </Typography>
             </div>
           </Link>
         ))}

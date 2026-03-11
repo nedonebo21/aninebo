@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { useAnimeBySeason } from '@/entities/anime'
 import { getCurrentSeason } from '@/shared/lib'
+import { Typography } from '@/shared/ui'
 
 import { SeasonItems } from './season-items'
 
@@ -28,7 +29,7 @@ export const SeasonList = () => {
           'inline-flex items-center gap-1 text-base hover:text-green-600 mb-2 ml-2 transition-all'
         }
       >
-        <span>Аниме {currentSeasonName} сезона</span>
+        <Typography as={'span'}>Аниме {currentSeasonName} сезона</Typography>
         <ChevronRight height={14} width={14} />
       </Link>
       <SeasonItems anime={anime} />

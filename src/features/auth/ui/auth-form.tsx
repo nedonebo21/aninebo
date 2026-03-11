@@ -4,18 +4,20 @@ import { useState } from 'react'
 
 import { SignInForm } from '@/features/auth/ui/sign-in-form'
 import { SignUpForm } from '@/features/auth/ui/sign-up-form'
-import { Button, Card } from '@/shared/ui'
+import { Button, Card, Typography } from '@/shared/ui'
 
 export const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(false)
 
   return !isLogin ? (
     <>
-      <h1 className={'mb-2'}>Регистрация</h1>
+      <Typography as={'h1'} className={'mb-2'}>
+        Регистрация
+      </Typography>
       <Card className={'p-5'}>
         <SignUpForm />
-        <div className={'flex flex-col items-center mt-2'}>
-          <span>Есть аккаунт?</span>
+        <div className={'flex flex-col items-center mt-4'}>
+          <Typography as={'span'}>Есть аккаунт?</Typography>
           <Button
             className={'cursor-pointer text-green-600'}
             onClick={() => setIsLogin(true)}
@@ -28,11 +30,13 @@ export const AuthForm = () => {
     </>
   ) : (
     <>
-      <h1 className={'mb-2'}>Вход</h1>
+      <Typography as={'h1'} className={'mb-2'}>
+        Вход
+      </Typography>
       <Card className={'p-5'}>
         <SignInForm />
-        <div className={'flex flex-col items-center mt-2'}>
-          <span>Нет аккаунта?</span>
+        <div className={'flex flex-col items-center mt-4'}>
+          <Typography as={'span'}>Нет аккаунта?</Typography>
           <Button
             className={'cursor-pointer text-green-600'}
             onClick={() => setIsLogin(false)}

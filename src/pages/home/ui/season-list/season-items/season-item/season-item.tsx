@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { truncate } from '@/shared/lib'
+import { Typography } from '@/shared/ui'
 
 import type { Anime } from '@/entities/anime/model/types'
 
@@ -19,8 +20,16 @@ export const SeasonItem = ({ anime }: SeasonItemProps) => {
           <img className={'w-full h-[240px]'} src={anime.poster.medium} alt={'releaseLogo'} />
         </div>
         <div className={'flex flex-col p-1'}>
-          <strong className={'text-sm'}>{truncate(anime.title)}</strong>
-          <span className={'text-sm text-green-600 flex gap-1'}>{anime.type.name}</span>
+          <Typography as={'span'} variant={'bodyBold'} className={'text-sm'}>
+            {truncate(anime.title)}
+          </Typography>
+          <Typography
+            as={'span'}
+            variant={'bodyNormal'}
+            className={'text-sm text-green-600 flex gap-1'}
+          >
+            {anime.type.name}
+          </Typography>
         </div>
       </Link>
     </div>
