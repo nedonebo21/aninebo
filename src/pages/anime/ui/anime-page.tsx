@@ -39,6 +39,7 @@ export const AnimePage = ({ animeId }: AnimePageProps) => {
             <img
               className={'w-[300px] h-[500px] rounded-md mb-2'}
               src={anime?.poster.big ?? anime?.poster.medium}
+              alt={'poster'}
             />
             <AnimeActions />
           </div>
