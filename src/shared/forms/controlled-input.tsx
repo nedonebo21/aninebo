@@ -2,7 +2,7 @@
 
 import { useController } from 'react-hook-form'
 
-import { ClearButton, Input } from '@/shared/ui'
+import { ClearButton, Input, RequiredSymbol, Typography } from '@/shared/ui'
 
 import type { Control, FieldValues, UseControllerProps } from 'react-hook-form'
 
@@ -45,16 +45,24 @@ export const ControlledInput = <T extends FieldValues>({
   return (
     <label className={className}>
       {label && (
-        <p className={'flex gap-1 text-sm font-medium mb-1'}>
+        <Typography
+          as={'p'}
+          variant={'bodyNormal'}
+          className={'flex gap-1 text-sm font-medium mb-1'}
+        >
           {label}
-          {required && <div className={'text-red-500'}>*</div>}
-        </p>
+          {required && <RequiredSymbol />}
+        </Typography>
       )}
       <div className={'relative'}>
         <Input className={'h-10 text-md'} {...{ ...rest, value, onChange, onBlur, id: name }} />
         {isClearable && <ClearButton onClick={handleClear} />}
       </div>
-      {isError && <p className={'text-sm mt-2 text-red-500'}>{errorMessage}</p>}
+      {isError && (
+        <Typography variant={'error'} as={'p'} className={'text-sm mt-2'}>
+          {errorMessage}
+        </Typography>
+      )}
     </label>
   )
 }
