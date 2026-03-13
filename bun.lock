@@ -8,6 +8,7 @@
         "@hcaptcha/react-hcaptcha": "^2.0.2",
         "@hookform/resolvers": "^5.2.2",
         "@iframe-resizer/parent": "^5.5.9",
+        "@nedonebo21/eslint-config": "^1.0.7",
         "@radix-ui/react-dropdown-menu": "^2.1.16",
         "@radix-ui/react-navigation-menu": "^1.2.14",
         "@radix-ui/react-select": "^2.2.6",
@@ -31,7 +32,6 @@
         "zod": "^4.3.6",
       },
       "devDependencies": {
-        "@nedonebo21/eslint-config": "^1.0.7",
         "@nedonebo21/prettier-config": "^1.0.3",
         "@tailwindcss/postcss": "^4",
         "@tanstack/react-query-devtools": "^5.91.3",

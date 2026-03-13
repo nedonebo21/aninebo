@@ -17,13 +17,9 @@ export const VideoFilters = ({
   setSelectedDub,
   setSelectedPlayer,
 }: VideoFiltersProps) => {
-  const handlePlayerSelect = (player: string) => {
-    setSelectedPlayer(player)
-  }
+  const handlePlayerSelect = (player: string) => setSelectedPlayer(player)
 
-  const handleDubSelect = (dub: string) => {
-    setSelectedDub(dub)
-  }
+  const handleDubSelect = (dub: string) => setSelectedDub(dub)
 
   return (
     <div className={'flex items-center gap-1 mb-4'}>
