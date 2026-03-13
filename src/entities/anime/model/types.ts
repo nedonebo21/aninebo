@@ -10,7 +10,7 @@ export type AnimeVideos = {
   response: VideoResponse[]
 }
 
-type VideoResponse = {
+export type VideoResponse = {
   video_id: number
   iframe_url: string
   data: {
