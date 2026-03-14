@@ -1,1 +1,1 @@
-export { SearchAnimeResponse } from './types'
+export type { SearchAnimeResponse } from './types'
