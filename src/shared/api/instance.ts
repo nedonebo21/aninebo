@@ -13,10 +13,15 @@ export const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   config => {
-    const token = process.env.NEXT_PUBLIC_API_TOKEN
+    if (process.env.NEXT_PUBLIC_API_TOKEN) {
+      config.headers['X-Application'] = process.env.NEXT_PUBLIC_API_TOKEN
+    }
 
-    if (token) {
-      config.headers['X-Application'] = token
+    if (!isServer) {
+      const token = localStorage.getItem('token')
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+      }
     }
 
     return config
