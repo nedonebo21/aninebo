@@ -3,23 +3,25 @@
 import HCaptcha from '@hcaptcha/react-hcaptcha'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
-import { signUpSchema } from '@/features/auth/model/sign-up-schema'
+import { signUpSchema } from '@/features/auth/model'
 import { ControlledInput } from '@/shared/forms'
 import { Button } from '@/shared/ui'
 
-import type { SignUpFormValues } from '@/features/auth/model/sign-up-schema'
+import type { SignUpFormValues } from '@/features/auth/model'
 import type { ComponentProps } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
+import { useRegister } from '@/features/auth/api'
 
 type SignUpFormProps = Omit<ComponentProps<'form'>, 'onSubmit'> & {
   onSubmit?: SubmitHandler<SignUpFormValues>
 }
 export const SignUpForm = ({ onSubmit: onSubmitFormProps, ...rest }: SignUpFormProps) => {
   const [captchaToken, setCaptchaToken] = useState<string | null>(null)
+  const captchaRef = useRef<HCaptcha>(null)
 
   const router = useRouter()
 
@@ -36,18 +38,36 @@ export const SignUpForm = ({ onSubmit: onSubmitFormProps, ...rest }: SignUpFormP
     },
   })
 
-  const onSubmit: typeof onSubmitFormProps = async (data, e) => {
+  const { mutate: registerUser } = useRegister()
+
+  const onSubmit: typeof onSubmitFormProps = (data, e) => {
     if (onSubmitFormProps) {
-      await onSubmitFormProps(data)
-    } else {
-      try {
-        console.log({ data, e, captchaToken })
-        toast.success('Вы успешно зарегистрировались! Проверьте Email для подтверждения')
-        router.push('/')
-      } catch (err) {
-        console.error(err)
-      }
+      onSubmitFormProps(data)
+      return
     }
+
+    if (!captchaToken) {
+      toast.error('Пройдите капчу')
+      return
+    }
+
+    registerUser(
+      {
+        email: data.email,
+        username: data.username,
+        password: data.password,
+        captchaToken,
+      },
+      {
+        onSuccess: () => {
+          router.push('/')
+        },
+        onError: () => {
+          setCaptchaToken(null)
+          captchaRef.current?.resetCaptcha()
+        },
+      }
+    )
   }
 
   return (
@@ -73,6 +93,7 @@ export const SignUpForm = ({ onSubmit: onSubmitFormProps, ...rest }: SignUpFormP
         />
       </div>
       <HCaptcha
+        ref={captchaRef}
         sitekey={process.env.NEXT_PUBLIC_SITE_KEY ?? ''}
         onVerify={token => setCaptchaToken(token)}
         onExpire={() => setCaptchaToken(null)}
