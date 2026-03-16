@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 
-import { SignInForm } from '@/features/auth/ui/sign-in-form'
-import { SignUpForm } from '@/features/auth/ui/sign-up-form'
+import { SignInForm } from './sign-in-form'
+import { SignUpForm } from './sign-up-form'
 import { Button, Card, Typography } from '@/shared/ui'
 
 export const AuthForm = () => {

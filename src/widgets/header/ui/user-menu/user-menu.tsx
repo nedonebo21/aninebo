@@ -27,7 +27,7 @@ export const UserMenu = ({ id, avatar, nickname }: UserMenuProps) => {
         <DropdownMenuGroup className={'grid gap-1'}>
           <DropdownMenuLabel>{nickname}</DropdownMenuLabel>
           <DropdownMenuItem>
-            <Link href={`profile/${id}`}>Профиль</Link>
+            <Link href={`/profile/${id}`}>Профиль</Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
             <LogoutButton />

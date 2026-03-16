@@ -12,7 +12,7 @@ export const SeasonItem = ({ anime }: SeasonItemProps) => {
   return (
     <div
       className={
-        'flex-shrink-0 w-[190px] rounded-md shadow-md overflow-hidden hover:shadow-lg bg-secondary hover:bg-gray-800 transition-all'
+        'flex-shrink-0 w-[190px] rounded-md shadow-md overflow-hidden hover:shadow-lg bg-secondary hover:bg-secondary/60 transition-all'
       }
     >
       <Link href={`/anime/${anime.anime_id}`}>

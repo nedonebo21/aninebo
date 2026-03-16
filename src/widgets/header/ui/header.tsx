@@ -1,19 +1,25 @@
 'use client'
 
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { SearchAnime } from '@/features/search-anime'
 import { SwitchTheme } from '@/features/switch-theme'
-import { cn } from '@/shared/lib/utils'
-import { Button, Container, NavBar } from '@/shared/ui'
+import { Container, NavBar } from '@/shared/ui'
 
 import { HeaderLogo } from './header-logo'
+import { useMe } from '@/entities/user'
+import { UserMenu } from '@/widgets/header/ui/user-menu'
+import { AuthLink } from '@/widgets/header/ui/auth-link'
 
 export const Header = () => {
   const pathName = usePathname()
 
   const isOnAuthPage = pathName === '/auth'
+
+  const { data, error } = useMe()
+
+  const userData = data?.response
+  const isAuth = !error
 
   return (
     <header
@@ -26,16 +32,15 @@ export const Header = () => {
         <SearchAnime />
         <NavBar />
         <div className={'flex items-center gap-4'}>
-          <Link
-            href={'/auth'}
-            className={cn({
-              'pointer-events-none': isOnAuthPage,
-            })}
-          >
-            <Button className={cn({ 'cursor-pointer': !isOnAuthPage })} disabled={isOnAuthPage}>
-              Авторизация
-            </Button>
-          </Link>
+          {!isAuth ? (
+            <AuthLink isOnAuthPage={isOnAuthPage} />
+          ) : (
+            <UserMenu
+              id={userData?.id}
+              avatar={userData?.avatars.big}
+              nickname={userData?.nickname}
+            />
+          )}
           <SwitchTheme />
         </div>
       </Container>
