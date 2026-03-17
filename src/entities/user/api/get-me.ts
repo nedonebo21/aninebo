@@ -1,3 +1,5 @@
+'use client'
+
 import { axiosInstance } from '@/shared/api'
 import { UserProfile } from '@/entities/user/model/types'
 import { useQuery } from '@tanstack/react-query'
