@@ -1,3 +1,5 @@
 export { useDebounce } from './hooks/use-debounce'
 export { truncate } from './utils/truncate-text'
 export { getCurrentSeason } from './utils/get-current-season'
+export { formatDate } from './utils/format-date'
+export { isToday } from './utils/is-today'
