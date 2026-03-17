@@ -7,6 +7,7 @@ import { QueryProvider } from './query-provider'
 import { ThemeProvider } from './theme-provider'
 
 import type { ReactNode } from 'react'
+import { TooltipProvider } from '@/shared/ui'
 
 export const Providers = ({ children }: { children: ReactNode }) => {
   return (
@@ -18,7 +19,7 @@ export const Providers = ({ children }: { children: ReactNode }) => {
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </QueryProvider>
       <Toaster />
