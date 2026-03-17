@@ -19,7 +19,11 @@ export const UserMenu = ({ id, avatar, nickname }: UserMenuProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={'ghost'} size={'icon'}>
+        <Button
+          className={'border border-primary/40 cursor-pointer'}
+          variant={'ghost'}
+          size={'icon'}
+        >
           <img className={'rounded-md'} src={avatar} alt={'avatar'} />
         </Button>
       </DropdownMenuTrigger>
