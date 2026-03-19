@@ -9,6 +9,7 @@ const variantMapping = {
   bodySemiBold: 'text-[15px] font-semibold leading-tight',
   bodyBold: 'text-base font-bold leading-tight',
   error: 'text-red-600 text-sm',
+  warning: 'text-yellow-600 text-sm',
 }
 
 type TypographyOwnProps<T extends ElementType = ElementType> = {
