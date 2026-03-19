@@ -9,8 +9,11 @@ export const LogoutButton = () => {
   const { mutate: logout } = useLogout()
 
   const onLogout = () => {
-    logout()
-    router.push('/')
+    logout(undefined, {
+      onSuccess: () => {
+        router.push('/')
+      },
+    })
   }
 
   return (

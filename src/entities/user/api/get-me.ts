@@ -12,10 +12,7 @@ export function useMe() {
   return useQuery<UserProfile>({
     queryKey: ['me'],
     queryFn: getMe,
-    staleTime: 1000 * 60 * 30,
-    gcTime: 1000 * 60 * 60 * 24,
-    retry: 1,
-    refetchOnWindowFocus: false,
-    refetchOnMount: true,
+    retry: false,
+    staleTime: 0,
   })
 }

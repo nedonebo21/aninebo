@@ -12,6 +12,7 @@ import { signInSchema } from '@/features/auth/model'
 import { ControlledInput } from '@/shared/forms'
 import { Button } from '@/shared/ui'
 import { useLogin } from '@/features/auth/api'
+import { useQueryClient } from '@tanstack/react-query'
 
 type SignInFormProps = Omit<ComponentProps<'form'>, 'onSubmit'> & {
   onSubmit?: SubmitHandler<SignInFormValues>
@@ -34,6 +35,7 @@ export const SignInForm = ({ onSubmit: onSubmitFormProps, ...rest }: SignInFormP
   })
 
   const { mutate: loginUser } = useLogin()
+  const queryClient = useQueryClient()
 
   const onSubmit: typeof onSubmitFormProps = (data, e) => {
     if (onSubmitFormProps) {
@@ -53,7 +55,8 @@ export const SignInForm = ({ onSubmit: onSubmitFormProps, ...rest }: SignInFormP
         captchaToken,
       },
       {
-        onSuccess: () => {
+        onSuccess: async () => {
+          await queryClient.invalidateQueries({ queryKey: ['me'] })
           router.push('/')
         },
         onError: () => {

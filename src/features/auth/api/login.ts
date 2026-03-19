@@ -1,6 +1,6 @@
 'use client'
 
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { axiosInstance } from '@/shared/api'
 import toast from 'react-hot-toast'
 
@@ -23,7 +23,6 @@ const login = async ({
 }
 
 export function useLogin() {
-  const queryClient = useQueryClient()
   return useMutation({
     mutationFn: login,
     onSuccess: async data => {
@@ -31,11 +30,6 @@ export function useLogin() {
       if (token) {
         localStorage.setItem('token', token)
         toast.success('Вы успешно вошли!')
-        await queryClient.refetchQueries({
-          queryKey: ['me'],
-          type: 'active',
-          exact: true,
-        })
       }
     },
     onError: err => {
