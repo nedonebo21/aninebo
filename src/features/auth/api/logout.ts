@@ -3,18 +3,21 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 
 const logout = async () => {
-  return (await axiosInstance.post('/profile/logout')).data
+  try {
+    return (await axiosInstance.post('/profile/logout')).data
+  } catch {
+    return { response: true }
+  }
 }
 
 export function useLogout() {
   const queryClient = useQueryClient()
   return useMutation({
     mutationFn: logout,
-    onMutate: () => {
-      localStorage.removeItem('token')
-    },
     onSuccess: () => {
-      queryClient.clear()
+      localStorage.removeItem('token')
+      queryClient.setQueryData(['me'], null)
+      queryClient.removeQueries({ queryKey: ['me'] })
       toast.success('Вы вышли из аккаунта')
     },
     onError: err => {
