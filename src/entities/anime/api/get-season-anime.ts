@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { axiosInstance } from '@/shared/api'
 
-import type { AnimeBySeasonResponse, AnimeSeasons } from '@/entities/anime/model/types'
+import type { AnimeResponse, AnimeSeasons } from '@/entities/anime/model/types'
 
 type AnimeBySeasonOptions = {
   season: AnimeSeasons
@@ -12,8 +12,8 @@ type AnimeBySeasonOptions = {
 const getAnimeBySeason = async ({
   season,
   limit = 6,
-}: AnimeBySeasonOptions): Promise<AnimeBySeasonResponse> => {
-  const { data } = await axiosInstance.get<AnimeBySeasonResponse>('/anime', {
+}: AnimeBySeasonOptions): Promise<AnimeResponse> => {
+  const { data } = await axiosInstance.get<AnimeResponse>('/anime', {
     params: {
       season,
       limit,
@@ -24,7 +24,7 @@ const getAnimeBySeason = async ({
 }
 
 export function useAnimeBySeason(season: AnimeSeasons, limit: number = 6) {
-  return useQuery<AnimeBySeasonResponse>({
+  return useQuery<AnimeResponse>({
     queryKey: ['anime', 'season'],
     queryFn: () => getAnimeBySeason({ season, limit }),
     staleTime: 1000 * 60 * 60,
