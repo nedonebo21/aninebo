@@ -1,3 +1,207 @@
+export type AnimeCatalog = {
+  response: AnimeCatalogResponse
+}
+
+type AnimeCatalogResponse = {
+  genres: {
+    genres: {
+      title: string
+      href: string
+      value: number
+      more_titles: string[]
+      group_id: number
+    }[]
+    groups: {
+      title: string
+      id: number
+    }[]
+  }
+  data: {
+    anime_id: number
+    anime_status: {
+      title: string
+      class: string
+      alias: string
+      value: number
+    }
+    anime_url: string
+    poster: {
+      small: string
+      medium: string
+      big: string
+      huge: string
+      fullsize: string
+      mega: string
+    }
+    rating: {
+      average: number
+      kp_rating: number
+      anidub_rating: number
+      counters: number
+      myanimelist_rating: number
+      shikimori_rating: number
+      worldart_rating: number
+    }
+    title: string
+    type: {
+      name: string
+      value: number
+      shortname: string
+      alias: string
+    }
+    year: number
+    description: string
+    views: number
+    season: number
+    min_age: {
+      value: number
+      title: string
+      title_long: string
+    }
+    user: {
+      list: {
+        is_fav: boolean
+        list: {
+          title: string
+          href: string
+          id: number
+        }
+      }
+      rating: number
+    }
+    remote_ids: {
+      worldart_id: number
+      worldart_type: string
+      kp_id: number
+      anidub_id: number
+      sr_id: number
+      anilibria_alias: string
+      shikimori_id: number
+      myanimelist_id: number
+    }
+    top: {
+      category: number
+      global: number
+    }
+    blocked_in: string[]
+    original: string
+    duration: number
+    other_titles: string[]
+    creators: {
+      title: string
+      id: number
+      url: string
+    }[]
+    studios: {
+      title: string
+      id: number
+      url: string
+    }[]
+    videos: {
+      video_id: number
+      iframe_url: string
+      data: {
+        dubbing: string
+        player: string
+        player_id: number
+      }
+      number: string
+      date: number
+      index: number
+      skips: {
+        ending: { time: number; length: number }
+        opening: { time: number; length: number }
+      }
+      views: number
+      duration: number
+    }[]
+    genres: {
+      title: string
+      id: number
+      alias: string
+      url: string
+    }[]
+    viewing_order: {
+      title: string
+      anime_id: number
+      type: {
+        name: string
+        value: number
+        shortname: string
+        alias: string
+      }
+      anime_url: string
+      anime_status: {
+        title: string
+        class: string
+        alias: string
+        value: number
+      }
+      description: string
+      poster: {
+        small: string
+        medium: string
+        big: string
+        huge: string
+        fullsize: string
+        mega: string
+      }
+      user: {
+        list: {
+          list: {
+            title: string
+            href: string
+            id: number
+          }
+          is_fav: boolean
+        }
+        rating: number
+      }
+      year: number
+      data: {
+        id: number
+        index: number
+        text: string
+      }
+    }[]
+    translates: {
+      title: string
+      href: string
+      value: number
+    }[]
+    episodes: {
+      aired: number
+      count: number
+      next_date: number
+      prev_date: number
+    }
+    comments_count: number
+    reviews_count: number
+    random_screenshots: {
+      sizes: {
+        small: string
+        full: string
+      }
+      id: number
+      time: number
+      episode: string
+    }[]
+    posts_count: number
+    partner_videos_count: number
+  }[]
+  types: {
+    type: {
+      name: string
+      value: number
+      shortname: string
+      alias: string
+    }
+    count: number
+  }[]
+}
+
+export type AnimeVideoType = 'tv' | 'movie' | 'shortfilm' | 'ova' | 'special' | 'shorttv' | 'ona'
+
 export type AnimeSeasons = {
   season: 'winter' | 'spring' | 'summer' | 'autumn'
 }
@@ -240,7 +444,7 @@ export type AnimeOngoingsResponse = {
   }
 }
 
-export type AnimeBySeasonResponse = {
+export type AnimeResponse = {
   response: Anime[]
 }
 

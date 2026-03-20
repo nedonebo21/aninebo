@@ -1,6 +1,7 @@
-export type { AnimeOngoingsResponse, AnimeByIdResponse } from './model/types'
+export type { AnimeOngoingsResponse, AnimeByIdResponse, Anime, AnimeVideoType } from './model/types'
 export { useAnimeOngoings } from './api/get-anime-ongoings'
 export { useAnimeBySeason } from './api/get-season-anime'
 export { useAnimeById } from './api/get-anime-by-id'
 export { useAnimeVideos } from './api/get-anime-videos'
 export { useVideoFilters } from './model/use-video-filters'
+export { useAnimeTop } from './api/get-anime-top'
