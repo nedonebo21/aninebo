@@ -11,7 +11,7 @@ import { OngoingItems } from './ongoing-items'
 export const OngoingList = () => {
   const { data } = useAnimeOngoings()
 
-  const ongoings = data?.response.slice(1, 7) || []
+  const ongoings = Array.isArray(data?.response) ? data.response.slice(1, 7) : []
 
   return (
     <div>
