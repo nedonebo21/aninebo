@@ -1,26 +1,23 @@
 import HCaptcha from '@hcaptcha/react-hcaptcha'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
-import { ComponentProps, useRef } from 'react'
-import { useState } from 'react'
+import type { ComponentProps } from 'react'
 import type { SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
-import toast from 'react-hot-toast'
 
 import type { SignInFormValues } from '@/features/auth/model'
 import { signInSchema } from '@/features/auth/model'
 import { ControlledInput } from '@/shared/forms'
 import { Button } from '@/shared/ui'
-import { useLogin } from '@/features/auth/api'
-import { useQueryClient } from '@tanstack/react-query'
+import { useCaptcha, useAuthForm } from '@/features/auth/model'
 
 type SignInFormProps = Omit<ComponentProps<'form'>, 'onSubmit'> & {
   onSubmit?: SubmitHandler<SignInFormValues>
 }
+
 export const SignInForm = ({ onSubmit: onSubmitFormProps, ...rest }: SignInFormProps) => {
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
-  const captchaRef = useRef<HCaptcha>(null)
-  const router = useRouter()
+  const { captchaToken, captchaRef, handleVerify, handleExpire, resetCaptcha, validateCaptcha } =
+    useCaptcha()
+  const { handleSignIn } = useAuthForm()
 
   const {
     handleSubmit,
@@ -34,37 +31,20 @@ export const SignInForm = ({ onSubmit: onSubmitFormProps, ...rest }: SignInFormP
     },
   })
 
-  const { mutate: loginUser } = useLogin()
-  const queryClient = useQueryClient()
-
   const onSubmit: typeof onSubmitFormProps = (data, e) => {
     if (onSubmitFormProps) {
-      onSubmitFormProps(data)
+      onSubmitFormProps(data, e)
       return
     }
 
-    if (!captchaToken) {
-      toast.error('Пройдите капчу')
+    if (!validateCaptcha()) {
       return
     }
 
-    loginUser(
-      {
-        login: data.login,
-        password: data.password,
-        captchaToken,
-      },
-      {
-        onSuccess: async () => {
-          await queryClient.invalidateQueries({ queryKey: ['me'] })
-          router.push('/')
-        },
-        onError: () => {
-          setCaptchaToken(null)
-          captchaRef.current?.resetCaptcha()
-        },
-      }
-    )
+    handleSignIn(data, {
+      captchaToken,
+      onCaptchaError: resetCaptcha,
+    })
   }
 
   return (
@@ -86,8 +66,8 @@ export const SignInForm = ({ onSubmit: onSubmitFormProps, ...rest }: SignInFormP
       <HCaptcha
         ref={captchaRef}
         sitekey={process.env.NEXT_PUBLIC_SITE_KEY ?? ''}
-        onVerify={token => setCaptchaToken(token)}
-        onExpire={() => setCaptchaToken(null)}
+        onVerify={handleVerify}
+        onExpire={handleExpire}
       />
       <Button className={'cursor-pointer mt-5 w-full'} type={'submit'}>
         Войти
