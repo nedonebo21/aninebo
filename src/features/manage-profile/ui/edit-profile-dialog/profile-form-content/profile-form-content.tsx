@@ -8,14 +8,16 @@ import {
 } from '@/shared/ui'
 import { Button } from '@/shared/ui'
 import { ControlledInput, ControlledTextarea } from '@/shared/forms'
+import { Control, FieldErrors } from 'react-hook-form'
+import { ChangeProfileFormValues } from '@/features/manage-profile/model'
 
 type ProfileFormContentProps = {
-  control: any
-  errors: any
+  control: Control<ChangeProfileFormValues>
+  errors: FieldErrors<ChangeProfileFormValues>
   onSubmit: () => void
 }
 
-export const ProfileFormContent = ({ control, errors, onSubmit }: ProfileFormContentProps) => {
+export const ProfileFormContent = ({ control, errors }: ProfileFormContentProps) => {
   return (
     <>
       <DialogHeader className={'mb-4'}>

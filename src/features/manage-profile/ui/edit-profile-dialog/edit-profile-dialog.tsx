@@ -5,9 +5,10 @@ import { ComponentProps } from 'react'
 
 import { useProfileForm } from '@/features/manage-profile/model'
 import { ProfileFormContent } from './profile-form-content'
+import { ChangeProfileFormValues } from '@/features/manage-profile/model'
 
 type ChangeProfileProps = Omit<ComponentProps<'form'>, 'onSubmit'> & {
-  onSubmit?: SubmitHandler<any>
+  onSubmit?: SubmitHandler<ChangeProfileFormValues>
 }
 
 export const EditProfileDialog = ({ onSubmit: onSubmitFormProps, ...rest }: ChangeProfileProps) => {
