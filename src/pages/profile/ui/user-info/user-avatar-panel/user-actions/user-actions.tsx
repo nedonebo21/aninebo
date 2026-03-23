@@ -1,6 +1,6 @@
 import { Button } from '@/shared/ui'
 import { ImageUpIcon } from 'lucide-react'
-import { ChangeProfileInfo } from '@/features/manage-profile'
+import { EditProfileDialog } from '@/features/manage-profile'
 
 export const UserActions = () => {
   return (
@@ -8,7 +8,7 @@ export const UserActions = () => {
       <Button className={'cursor-pointer'}>
         <ImageUpIcon width={16} height={16} />
       </Button>
-      <ChangeProfileInfo />
+      <EditProfileDialog />
     </div>
   )
 }
