@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 export function middleware(req: NextRequest) {
+  if (req.nextUrl.pathname.startsWith('/api/yani')) return NextResponse.next()
+
   const token = req.cookies.get('yummy_token')?.value
   const isAuthPage = req.nextUrl.pathname === '/auth'
 
