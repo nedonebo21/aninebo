@@ -16,11 +16,22 @@ async function proxyRequest(req: NextRequest) {
   })
 
   const text = await res.text()
+
+  let body: object | null = null
   try {
-    return NextResponse.json(JSON.parse(text), { status: res.status })
+    body = JSON.parse(text)
   } catch {
     return new Response(text, { status: res.status })
   }
+
+  const response = NextResponse.json(body, { status: res.status })
+
+  const cookies = res.headers.getSetCookie()
+  cookies.forEach(cookie => {
+    response.headers.append('Set-Cookie', cookie)
+  })
+
+  return response
 }
 
 export const GET = proxyRequest
