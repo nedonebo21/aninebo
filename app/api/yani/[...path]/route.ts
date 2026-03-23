@@ -16,7 +16,17 @@ async function proxyRequest(req: NextRequest) {
     fetchOptions.body = await req.text()
   }
 
-  const res = await fetch(url, fetchOptions)
+  const cookie = req.headers.get('cookie') || ''
+
+  const res = await fetch(url, {
+    method: req.method,
+    headers: {
+      'X-Application': process.env.NEXT_PUBLIC_API_TOKEN || '',
+      'Content-Type': 'application/json',
+      Cookie: cookie,
+    },
+    body: ['POST', 'PATCH', 'PUT'].includes(req.method || '') ? await req.text() : undefined,
+  })
   const text = await res.text()
 
   try {
