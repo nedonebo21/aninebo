@@ -1,4 +1,4 @@
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { axiosInstance } from '@/shared/api'
 
@@ -28,6 +28,5 @@ export function useAnimeSearch(query: string, limit: number = 6) {
     queryFn: () => searchAnime({ q: trimmedQuery, limit }),
     enabled: trimmedQuery.length >= 2,
     staleTime: 1000 * 60 * 3,
-    placeholderData: keepPreviousData,
   })
 }
