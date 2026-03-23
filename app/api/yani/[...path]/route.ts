@@ -10,6 +10,7 @@ async function proxyRequest(req: NextRequest) {
       'X-Application': process.env.NEXT_PUBLIC_API_TOKEN || '',
       'Content-Type': 'application/json',
       Cookie: req.headers.get('cookie') || '',
+      Authorization: req.headers.get('authorization') ?? '',
     },
     body: ['POST', 'PATCH', 'PUT'].includes(req.method || '') ? await req.text() : undefined,
   })
