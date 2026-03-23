@@ -17,7 +17,7 @@ async function proxyRequest(req: NextRequest) {
 
   const text = await res.text()
   try {
-    return NextResponse.json(JSON.parse(text))
+    return NextResponse.json(JSON.parse(text), { status: res.status })
   } catch {
     return new Response(text, { status: res.status })
   }
