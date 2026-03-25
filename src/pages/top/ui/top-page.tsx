@@ -1,11 +1,16 @@
 import { Container, HomeLink } from '@/shared/ui'
 import { TopList } from './top-list'
+import { AnimeVideoType } from '@/entities/anime'
 
-export const TopPage = () => {
+type TopPageProps = {
+  type: AnimeVideoType
+}
+
+export const TopPage = ({ type }: TopPageProps) => {
   return (
     <Container className={'mt-10'}>
       <HomeLink className={'ml-0'} />
-      <TopList />
+      <TopList activeType={type} />
     </Container>
   )
 }

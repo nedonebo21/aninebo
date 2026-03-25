@@ -1,1 +1,5 @@
-export { TopPage as default } from '@/pages/top'
+import { redirect } from 'next/navigation'
+
+export default async function TopDefaultPage() {
+  redirect('/top/tv')
+}
