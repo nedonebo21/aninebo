@@ -1,19 +1,18 @@
 'use client'
 
-import { useAnimeById } from '@/entities/anime'
 import { AnimeHeader } from '@/pages/anime/ui/anime-header'
 import { AnimeHeroSection } from '@/pages/anime/ui/anime-hero-section'
 import { AnimeVideoSection } from '@/pages/anime/ui/anime-video-section'
 import { Card, Container, HomeLink } from '@/shared/ui'
+
+import { useAnimeByIdData } from '@/entities/anime'
 
 type AnimePageProps = {
   animeId: string
 }
 
 export const AnimePage = ({ animeId }: AnimePageProps) => {
-  const { data } = useAnimeById(animeId)
-
-  const anime = data?.response
+  const { anime } = useAnimeByIdData(animeId)
 
   return (
     <Container className={'mt-10'}>

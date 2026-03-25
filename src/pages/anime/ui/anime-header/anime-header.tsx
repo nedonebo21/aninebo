@@ -1,14 +1,16 @@
 import { EyeIcon } from 'lucide-react'
 
 import { Typography } from '@/shared/ui'
+import { hasOtherTitles } from '@/pages/anime/model/lib'
 
 type AnimeHeaderProps = {
   views?: number
   title?: string
   otherTitles?: string[]
 }
+
 export const AnimeHeader = ({ views, title, otherTitles }: AnimeHeaderProps) => {
-  const hasOtherTitles = otherTitles && otherTitles?.length > 0
+  const showOtherTitles = hasOtherTitles(otherTitles)
 
   return (
     <div className={'mb-2'}>
@@ -16,8 +18,8 @@ export const AnimeHeader = ({ views, title, otherTitles }: AnimeHeaderProps) => 
         {title}
       </Typography>
       <div className={'flex gap-1'}>
-        {hasOtherTitles &&
-          otherTitles.map(otherTitle => (
+        {showOtherTitles &&
+          otherTitles?.map(otherTitle => (
             <Typography
               key={otherTitle}
               className={'text-gray-400 border border-primary rounded-sm px-2 py-[2px]'}
