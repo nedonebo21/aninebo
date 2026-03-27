@@ -6,6 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
+  UserAvatarSkeleton,
 } from '@/shared/ui'
 import Link from 'next/link'
 import { LogoutButton } from '@/features/auth'
@@ -14,17 +15,18 @@ type UserMenuProps = {
   id?: number
   avatar?: string
   nickname?: string
+  isLoading: boolean
 }
-export const UserMenu = ({ id, avatar, nickname }: UserMenuProps) => {
+export const UserMenu = ({ id, avatar, nickname, isLoading }: UserMenuProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          className={'border border-primary/40 cursor-pointer'}
-          variant={'ghost'}
-          size={'icon'}
-        >
-          <img className={'rounded-md'} src={avatar} alt={'avatar'} />
+        <Button className={'cursor-pointer'} variant={'ghost'} size={'icon'}>
+          {isLoading ? (
+            <UserAvatarSkeleton />
+          ) : (
+            <img className={'rounded-md'} src={avatar} alt={'avatar'} />
+          )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

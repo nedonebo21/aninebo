@@ -16,7 +16,7 @@ export const Header = () => {
 
   const isOnAuthPage = pathName === '/auth'
 
-  const { data, error } = useMe()
+  const { data, isLoading, error } = useMe()
 
   const userData = data?.response
   const isAuth = !error
@@ -39,6 +39,7 @@ export const Header = () => {
               id={userData?.id}
               avatar={userData?.avatars.big}
               nickname={userData?.nickname}
+              isLoading={isLoading}
             />
           )}
           <SwitchTheme />
