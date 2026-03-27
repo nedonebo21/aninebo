@@ -121,4 +121,21 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  button,
+  [role='button'] {
+    cursor: pointer;
+  }
+
+  #nprogress .bar {
+    @apply !bg-green-600;
+  }
+
+  #nprogress .peg {
+    @apply !shadow-md !shadow-green-600;
+  }
+
+  #nprogress .spinner-icon {
+    @apply !border-t-green-600 !border-l-green-600;
+  }
 }
