@@ -6,13 +6,13 @@ import { SeasonItems } from './season-items'
 
 export const SeasonList = () => {
   const { season, href, title } = getHomeSeasonMeta()
-  const { data } = useAnimeBySeason({ season })
+  const { data, isLoading } = useAnimeBySeason({ season })
 
   const anime = data?.response ?? []
 
   return (
     <HomeSection href={href} title={title}>
-      <SeasonItems anime={anime} />
+      <SeasonItems anime={anime} isLoading={isLoading} />
     </HomeSection>
   )
 }
