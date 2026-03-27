@@ -12,14 +12,19 @@ type AnimePageProps = {
 }
 
 export const AnimePage = ({ animeId }: AnimePageProps) => {
-  const { anime } = useAnimeByIdData(animeId)
+  const { anime, isLoading } = useAnimeByIdData(animeId)
 
   return (
     <Container className={'mt-10'}>
       <HomeLink />
       <Card className={'p-5'}>
-        <AnimeHeader views={anime?.views} title={anime?.title} otherTitles={anime?.other_titles} />
-        <AnimeHeroSection anime={anime} />
+        <AnimeHeader
+          views={anime?.views}
+          title={anime?.title}
+          otherTitles={anime?.other_titles}
+          isLoading={isLoading}
+        />
+        <AnimeHeroSection anime={anime} isLoading={isLoading} />
         <AnimeVideoSection animeId={animeId} />
       </Card>
     </Container>

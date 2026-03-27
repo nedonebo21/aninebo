@@ -3,25 +3,27 @@ import { AnimeInfo } from '@/pages/anime/ui/anime-hero-section/anime-info/anime-
 import { getAnimePoster } from '@/pages/anime/model/lib'
 
 import type { AnimeByIdResponse } from '@/entities/anime'
+import { AnimeImgSkeleton } from '@/shared/ui'
 
 type AnimeHeroSectionProps = {
   anime?: AnimeByIdResponse
+  isLoading: boolean
 }
 
-export const AnimeHeroSection = ({ anime }: AnimeHeroSectionProps) => {
+export const AnimeHeroSection = ({ anime, isLoading }: AnimeHeroSectionProps) => {
   const posterUrl = getAnimePoster(anime)
 
   return (
     <div className={'flex justify-between gap-4'}>
       <div className={'min-w-[300px]'}>
-        <img
-          className={'w-[300px] h-[500px] rounded-md mb-2'}
-          src={posterUrl}
-          alt={'poster'}
-        />
+        {isLoading ? (
+          <AnimeImgSkeleton />
+        ) : (
+          <img className={'w-[300px] h-[500px] rounded-md mb-2'} src={posterUrl} alt={'poster'} />
+        )}
         <AnimeActions />
       </div>
-      <AnimeInfo anime={anime} />
+      <AnimeInfo anime={anime} isLoading={isLoading} />
     </div>
   )
 }
