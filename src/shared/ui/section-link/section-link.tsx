@@ -4,13 +4,13 @@ import type { ReactNode } from 'react'
 
 import { Typography } from '@/shared/ui'
 
-type HomeSectionProps = {
+type SectionLinkProps = {
   children: ReactNode
   href: string
   title: string
 }
 
-export const HomeSection = ({ children, href, title }: HomeSectionProps) => {
+export const SectionLink = ({ children, href, title }: SectionLinkProps) => {
   return (
     <section>
       <Link

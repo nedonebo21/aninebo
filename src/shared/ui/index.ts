@@ -5,8 +5,10 @@ export { ClearButton } from './clear-button'
 export { Typography } from './typography'
 export { RequiredSymbol } from './required-symbol'
 export { HomeLink } from './home-link'
+export { SectionLink } from './section-link'
+export { AnimePreviewCard } from './anime-preview-card'
 export {
-  HomeAnimeCardSkeleton,
+  AnimePreviewCardSkeleton,
   UserAvatarSkeleton,
   AnimeImgSkeleton,
   AnimeTitleSkeleton,
