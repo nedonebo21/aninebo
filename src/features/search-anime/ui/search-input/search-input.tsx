@@ -29,7 +29,7 @@ export const SearchInput = ({
         <Search className={'h-5'} />
       </button>
       <Input
-        placeholder={'\u041f\u043e\u0438\u0441\u043a \u0430\u043d\u0438\u043c\u0435...'}
+        placeholder={'Поиск аниме...'}
         value={search}
         onFocus={onFocus}
         onChange={e => onChange(e.target.value)}
