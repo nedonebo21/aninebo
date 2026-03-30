@@ -1,5 +1,4 @@
-import { HomeAnimeCard } from '@/pages/home/ui/home-anime-card'
-import { HomeAnimeCardSkeleton, Typography } from '@/shared/ui'
+import { AnimePreviewCard, AnimePreviewCardSkeleton, Typography } from '@/shared/ui'
 
 import type { Anime } from '@/entities/anime/model/types'
 
@@ -12,9 +11,9 @@ export const SeasonItems = ({ anime, isLoading }: SeasonItemsProps) => {
   return (
     <div className={'flex items-center justify-center gap-2'}>
       {isLoading
-        ? Array.from({ length: 6 }).map((_, index) => <HomeAnimeCardSkeleton key={index} />)
+        ? Array.from({ length: 6 }).map((_, index) => <AnimePreviewCardSkeleton key={index} />)
         : anime.map(item => (
-            <HomeAnimeCard
+            <AnimePreviewCard
               key={item.anime_id}
               animeId={item.anime_id}
               imageUrl={item.poster.medium}

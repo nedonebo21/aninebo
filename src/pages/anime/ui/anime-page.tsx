@@ -15,7 +15,7 @@ export const AnimePage = ({ animeId }: AnimePageProps) => {
   const { anime, isLoading } = useAnimeByIdData(animeId)
 
   return (
-    <Container className={'mt-10'}>
+    <Container className={'my-10'}>
       <HomeLink />
       <Card className={'p-5'}>
         <AnimeHeader

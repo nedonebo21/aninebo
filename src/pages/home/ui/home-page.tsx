@@ -6,7 +6,7 @@ import { Container } from '@/shared/ui'
 
 export const HomePage = () => {
   return (
-    <Container className={'flex flex-col gap-5 mt-10'}>
+    <Container className={'flex flex-col gap-5 my-10'}>
       <OngoingList />
       <SeasonList />
     </Container>

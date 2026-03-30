@@ -1,8 +1,8 @@
-﻿'use client'
+'use client'
 
 import { useAnimeOngoings } from '@/entities/anime'
+import { SectionLink } from '@/shared/ui'
 
-import { HomeSection } from '../home-section'
 import { OngoingItems } from './ongoing-items'
 
 export const OngoingList = () => {
@@ -11,8 +11,8 @@ export const OngoingList = () => {
   const ongoings = Array.isArray(data?.response) ? data.response.slice(1, 7) : []
 
   return (
-    <HomeSection href={'/ongoings'} title={'Онгоинги'}>
+    <SectionLink href={'/ongoings'} title={'Онгоинги'}>
       <OngoingItems ongoings={ongoings} isLoading={isLoading} />
-    </HomeSection>
+    </SectionLink>
   )
 }

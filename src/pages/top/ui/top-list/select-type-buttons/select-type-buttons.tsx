@@ -1,13 +1,7 @@
-import { AnimeVideoType } from '@/entities/anime/model/types'
+import { ANIME_TYPES, AnimeVideoType } from '@/entities/anime'
 import { Button } from '@/shared/ui'
 import { cn } from '@/shared/lib/utils'
 import { useRouter } from 'next/navigation'
-
-const ANIME_TYPES: { label: string; value: AnimeVideoType }[] = [
-  { label: 'Сериалы', value: 'tv' },
-  { label: 'Фильмы', value: 'movie' },
-  { label: 'ONA', value: 'ona' },
-]
 
 type SelectTypeButtonProps = {
   activeType: AnimeVideoType

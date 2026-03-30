@@ -8,7 +8,7 @@ export const HeaderLogo = () => {
     <Link href={'/'} className={'flex items-center gap-1'}>
       <Image className={'w-[131px] h-[80px]'} src={Logo} alt={'Logo'} />
       <div className={'flex flex-col gap-1'}>
-        <span className={'text-sm text-gray-400 leading-3'}>by Nebonebo21</span>
+        <span className={'text-sm text-gray-400 leading-3'}>by nebonebo21</span>
       </div>
     </Link>
   )

@@ -1,6 +1,10 @@
 import { Skeleton } from '@/shared/ui'
 
-export const HomeAnimeCardSkeleton = () => {
+type AnimePreviewCardSkeletonProps = {
+  isTop?: boolean
+}
+
+export const AnimePreviewCardSkeleton = ({ isTop }: AnimePreviewCardSkeletonProps) => {
   return (
     <div
       className={
@@ -14,6 +18,7 @@ export const HomeAnimeCardSkeleton = () => {
         <div className={'flex flex-col gap-1 p-1'}>
           <Skeleton className={'w-[182px] h-[16px]'} />
           <Skeleton className={'w-[90px] h-[16px]'} />
+          {isTop && <Skeleton className={'w-[160px] h-[16px]'} />}
         </div>
       </div>
     </div>

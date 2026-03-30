@@ -1,4 +1,4 @@
-export { HomeAnimeCardSkeleton } from './home-anime-card-skeleton'
+export { AnimePreviewCardSkeleton } from './anime-preview-card-skeleton'
 export { UserAvatarSkeleton } from './user-avatar-skeleton'
 export { AnimeImgSkeleton } from './anime-img-skeleton'
 export { AnimeTitleSkeleton } from './anime-title-skeleton'
