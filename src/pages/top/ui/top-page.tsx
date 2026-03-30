@@ -8,7 +8,7 @@ type TopPageProps = {
 
 export const TopPage = ({ type }: TopPageProps) => {
   return (
-    <Container className={'mt-10'}>
+    <Container className={'my-10'}>
       <HomeLink className={'ml-0'} />
       <TopList activeType={type} />
     </Container>

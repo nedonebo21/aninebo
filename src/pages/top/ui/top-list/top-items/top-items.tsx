@@ -1,15 +1,19 @@
 import { Anime } from '@/entities/anime'
 import { TopItem } from './top-item'
+import { AnimePreviewCardSkeleton } from '@/shared/ui'
 
 type CatalogItemsProps = {
-  catalog?: Anime[]
+  topList?: Anime[]
+  isLoading: boolean
 }
-export const TopItems = ({ catalog }: CatalogItemsProps) => {
+export const TopItems = ({ topList, isLoading }: CatalogItemsProps) => {
   return (
     <div className={'flex flex-wrap items-center gap-2'}>
-      {catalog?.map(anime => (
-        <TopItem key={anime.anime_id} anime={anime} />
-      ))}
+      {isLoading
+        ? Array.from({ length: 18 }).map((_, index) => (
+            <AnimePreviewCardSkeleton key={index} isTop />
+          ))
+        : topList?.map(anime => <TopItem key={anime.anime_id} anime={anime} />)}
     </div>
   )
 }

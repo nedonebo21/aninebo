@@ -10,9 +10,9 @@ type TopListProps = {
 }
 
 export const TopList = ({ activeType }: TopListProps) => {
-  const { data } = useAnimeTop({ types: activeType })
+  const { data, isLoading } = useAnimeTop({ types: activeType })
 
-  const catalog = data?.response
+  const topList = data?.response
 
   const getTypeName = () => {
     if (activeType === 'tv') return 'сериалов'
@@ -22,11 +22,11 @@ export const TopList = ({ activeType }: TopListProps) => {
 
   return (
     <>
-      <Typography variant={'title'} as={'h1'}>
+      <Typography variant={'title'} className={'mb-2'} as={'h1'}>
         Топ-100 аниме {getTypeName()}
       </Typography>
       <SelectTypeButtons activeType={activeType} />
-      <TopItems catalog={catalog} />
+      <TopItems topList={topList} isLoading={isLoading} />
     </>
   )
 }
