@@ -19,19 +19,27 @@ export const SearchInput = ({
 }: SearchInputProps) => {
   return (
     <>
-      <Search className={'absolute top-1/2 translate-y-[-50%] left-3 h-5 text-gray-400'} />
+      <button
+        type={'submit'}
+        aria-label={'search'}
+        className={
+          'absolute top-1/2 left-3 h-5 -translate-y-1/2 text-gray-400 transition-all hover:text-green-800'
+        }
+      >
+        <Search className={'h-5'} />
+      </button>
       <Input
-        placeholder={'Поиск аниме...'}
+        placeholder={'\u041f\u043e\u0438\u0441\u043a \u0430\u043d\u0438\u043c\u0435...'}
         value={search}
         onFocus={onFocus}
         onChange={e => onChange(e.target.value)}
-        className={'rounded-2xl outline-none w-full pl-11'}
+        className={'w-full rounded-2xl pl-11 outline-none'}
       />
       {isCleared && (
         <XIcon
           onClick={onClear}
           className={
-            'absolute top-1/2 translate-y-[-50%] right-3 h-5 text-gray-400 hover:text-green-800 cursor-pointer transition-all'
+            'absolute top-1/2 right-3 h-5 -translate-y-1/2 cursor-pointer text-gray-400 transition-all hover:text-green-800'
           }
         />
       )}

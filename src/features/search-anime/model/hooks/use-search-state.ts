@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useClickAway } from 'react-use'
 import { useRef } from 'react'
 
@@ -11,10 +11,10 @@ export const useSearchState = () => {
     setFocused(false)
   })
 
-  const handleFocus = () => setFocused(true)
-  const handleBlur = () => setFocused(false)
-  const handleSearchChange = (value: string) => setSearch(value)
-  const handleClear = () => setSearch('')
+  const handleFocus = useCallback(() => setFocused(true), [])
+  const handleBlur = useCallback(() => setFocused(false), [])
+  const handleSearchChange = useCallback((value: string) => setSearch(value), [])
+  const handleClear = useCallback(() => setSearch(''), [])
 
   return {
     search,
