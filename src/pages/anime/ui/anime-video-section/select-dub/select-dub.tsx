@@ -10,8 +10,10 @@ export const SelectDub = ({ dubs, selectedDub, setSelectedDub }: SelectDubProps)
     setSelectedDub(dub)
   }
 
+  const hasDubs = dubs.length > 0
+
   return (
-    <Select value={selectedDub} onValueChange={handleDubSelect}>
+    <Select value={selectedDub} disabled={!hasDubs} onValueChange={handleDubSelect}>
       <SelectTrigger className={'w-[220px]'}>
         <SelectValue placeholder={'Выберите озвучку'} />
       </SelectTrigger>

@@ -10,8 +10,10 @@ export const SelectPlayer = ({ players, selectedPlayer, setSelectedPlayer }: Sel
     setSelectedPlayer(player)
   }
 
+  const hasPlayers = players.length > 0
+
   return (
-    <Select value={selectedPlayer} onValueChange={handlePlayerSelect}>
+    <Select value={selectedPlayer} disabled={!hasPlayers} onValueChange={handlePlayerSelect}>
       <SelectTrigger className={'w-[220px]'}>
         <SelectValue placeholder={'Выберите плеер'} />
       </SelectTrigger>
