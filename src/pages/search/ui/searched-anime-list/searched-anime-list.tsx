@@ -17,12 +17,6 @@ export const SearchedAnimeList = ({ trimmedWord }: SearchedAnimeListProps) => {
         Аниме по запросу "{trimmedWord}"
       </Typography>
 
-      {!trimmedWord && (
-        <Typography className={'text-muted-foreground'}>
-          Введите минимум 2 символа в строке поиска
-        </Typography>
-      )}
-
       {trimmedWord && <SearchedAnimeItems isLoading={isLoading} animeList={animeList} />}
 
       {!isLoading && trimmedWord && animeList.length === 0 && (

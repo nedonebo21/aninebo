@@ -1,16 +1,10 @@
 'use client'
 
-import { useEffect } from 'react'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-
 import { SearchSuggestions } from './search-suggestions'
-import { useSearchData, useSearchState } from '@/features/search-anime/model'
+import { useSearchAnime } from '@/features/search-anime/model'
 import { SearchInput } from './search-input'
 
 export const SearchAnime = () => {
-  const router = useRouter()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
   const {
     search,
     focused,
@@ -20,39 +14,9 @@ export const SearchAnime = () => {
     handleSearchChange,
     handleClear,
     isCleared,
-  } = useSearchState()
-
-  const { searchedAnime } = useSearchData(search)
-
-  useEffect(() => {
-    if (pathname !== '/search') {
-      handleClear()
-      return
-    }
-
-    const searchWordFromQuery = (searchParams?.get('word') ?? '').replaceAll('+', ' ').trim()
-
-    if (!searchWordFromQuery) {
-      handleClear()
-      return
-    }
-
-    handleSearchChange(searchWordFromQuery)
-  }, [pathname, searchParams, handleClear, handleSearchChange])
-
-  const handleSubmit = () => {
-    const searchValue = search.trim()
-
-    if (searchValue.length < 2) {
-      return
-    }
-
-    const params = new URLSearchParams()
-    params.set('word', searchValue)
-
-    handleBlur()
-    router.push(`/search?${params.toString()}`)
-  }
+    searchedAnime,
+    handleSubmit,
+  } = useSearchAnime()
 
   return (
     <>
