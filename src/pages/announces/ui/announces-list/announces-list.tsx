@@ -1,6 +1,6 @@
 'use client'
 
-import { EyeIcon, StarIcon } from 'lucide-react'
+import { EyeIcon } from 'lucide-react'
 
 import { useAnimeTop } from '@/entities/anime'
 import { AnimePreviewCard, AnimePreviewCardSkeleton, Typography } from '@/shared/ui'
