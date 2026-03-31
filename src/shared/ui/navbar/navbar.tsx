@@ -24,7 +24,7 @@ const animeMenu: { title: string; href: string }[] = [
   },
   {
     title: 'Анонсы',
-    href: '/anons',
+    href: '/announces',
   },
 ]
 
