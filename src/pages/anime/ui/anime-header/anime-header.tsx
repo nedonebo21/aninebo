@@ -23,11 +23,11 @@ export const AnimeHeader = ({ views, title, otherTitles, isLoading }: AnimeHeade
       {isLoading ? (
         <AnimeTitleSkeleton />
       ) : (
-        <Typography as={'h1'} variant={'title'}>
+        <Typography as={'h1'} className={'mb-2'} variant={'title'}>
           {title}
         </Typography>
       )}
-      <div className={'flex gap-1'}>
+      <div className={'flex flex-wrap gap-1'}>
         {isLoading
           ? Array.from({ length: 4 }).map((_, index) => <AnimeOtherTitlesSkeleton key={index} />)
           : showOtherTitles &&
