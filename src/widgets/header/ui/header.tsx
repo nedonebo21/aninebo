@@ -1,7 +1,5 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
-
 import { SearchAnime } from '@/features/search-anime'
 import { SwitchTheme } from '@/features/switch-theme'
 import { Container, NavBar } from '@/shared/ui'
@@ -12,10 +10,6 @@ import { UserMenu } from '@/widgets/header/ui/user-menu'
 import { AuthLink } from '@/widgets/header/ui/auth-link'
 
 export const Header = () => {
-  const pathName = usePathname()
-
-  const isOnAuthPage = pathName === '/auth'
-
   const { data, isLoading, error } = useMe()
 
   const userData = data?.response
@@ -32,15 +26,15 @@ export const Header = () => {
         <SearchAnime />
         <NavBar />
         <div className={'flex items-center gap-4'}>
-          {!isAuth ? (
-            <AuthLink isOnAuthPage={isOnAuthPage} />
-          ) : (
+          {isAuth ? (
             <UserMenu
               id={userData?.id}
               avatar={userData?.avatars.big}
               nickname={userData?.nickname}
               isLoading={isLoading}
             />
+          ) : (
+            <AuthLink />
           )}
           <SwitchTheme />
         </div>

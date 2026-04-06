@@ -6,6 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
+  UserAvatar,
   UserAvatarSkeleton,
 } from '@/shared/ui'
 import Link from 'next/link'
@@ -22,11 +23,7 @@ export const UserMenu = ({ id, avatar, nickname, isLoading }: UserMenuProps) => 
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button className={'cursor-pointer'} variant={'ghost'} size={'icon'}>
-          {isLoading ? (
-            <UserAvatarSkeleton />
-          ) : (
-            <img className={'rounded-md'} src={avatar} alt={'avatar'} />
-          )}
+          {isLoading ? <UserAvatarSkeleton /> : <UserAvatar avatar={avatar} />}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

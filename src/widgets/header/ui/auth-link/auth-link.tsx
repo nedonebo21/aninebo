@@ -1,11 +1,11 @@
 import { cn } from '@/shared/lib/utils'
 import { Button } from '@/shared/ui'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
-type AuthLinkProps = {
-  isOnAuthPage: boolean
-}
-export const AuthLink = ({ isOnAuthPage }: AuthLinkProps) => {
+export const AuthLink = () => {
+  const pathName = usePathname()
+  const isOnAuthPage = pathName === '/auth'
   return (
     <Link
       href={'/auth'}
