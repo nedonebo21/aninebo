@@ -1,7 +1,8 @@
 import { EyeIcon, StarIcon } from 'lucide-react'
 
-import { Anime } from '@/entities/anime'
 import { AnimePreviewCard, Typography } from '@/shared/ui'
+
+import type { Anime } from '@/entities/anime'
 
 type CatalogItemProps = {
   anime: Anime

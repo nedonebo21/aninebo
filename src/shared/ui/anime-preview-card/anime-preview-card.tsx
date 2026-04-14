@@ -1,9 +1,10 @@
-import Link from 'next/link'
-import type { ReactNode } from 'react'
 import { StarIcon } from 'lucide-react'
+import Link from 'next/link'
 
 import { truncate } from '@/shared/lib'
 import { Typography } from '@/shared/ui'
+
+import type { ReactNode } from 'react'
 
 type AnimePreviewCardProps = {
   animeId: number
@@ -29,6 +30,7 @@ export const AnimePreviewCard = ({
   withTopOverlay = false,
 }: AnimePreviewCardProps) => {
   const hasTopCategory = !!topCategory
+
   const hasTopRating = !!topRating
 
   return (

@@ -1,5 +1,12 @@
 'use client'
 
+import {
+  AnimeInfoDescriptionSkeleton,
+  AnimeInfoRowSkeleton,
+  AnimeInfoTagsSkeleton,
+  Card,
+} from '@/shared/ui'
+
 import { AgeRating } from './age-rating'
 import { AnimeDescription } from './anime-description'
 import { AnimeType } from './anime-type'
@@ -9,12 +16,6 @@ import { Genres } from './genres'
 import { Status } from './status'
 import { Studios } from './studios'
 import { YearReleased } from './year-released'
-import {
-  AnimeInfoDescriptionSkeleton,
-  AnimeInfoRowSkeleton,
-  AnimeInfoTagsSkeleton,
-  Card,
-} from '@/shared/ui'
 
 import type { AnimeByIdResponse } from '@/entities/anime/model/types'
 

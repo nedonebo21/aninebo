@@ -1,11 +1,12 @@
 import { useAnimeBySeason } from '@/entities/anime'
+import { getHomeSeasonMeta } from '@/pages/home/model'
 import { SectionLink } from '@/shared/ui'
 
-import { getHomeSeasonMeta } from '@/pages/home/model'
 import { SeasonItems } from './season-items'
 
 export const SeasonList = () => {
   const { season, href, title } = getHomeSeasonMeta()
+
   const { data, isLoading } = useAnimeBySeason({ season })
 
   const anime = data?.response ?? []

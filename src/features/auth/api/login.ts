@@ -1,8 +1,9 @@
 'use client'
 
 import { useMutation } from '@tanstack/react-query'
-import { axiosInstance } from '@/shared/api'
 import toast from 'react-hot-toast'
+
+import { axiosInstance } from '@/shared/api'
 
 const login = async ({
   login,
@@ -27,6 +28,7 @@ export function useLogin() {
     mutationFn: login,
     onSuccess: async data => {
       const token = data?.response?.token
+
       if (token) {
         localStorage.setItem('token', token)
         toast.success('Вы успешно вошли!')

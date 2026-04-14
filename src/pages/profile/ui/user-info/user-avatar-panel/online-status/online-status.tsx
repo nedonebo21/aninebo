@@ -1,5 +1,6 @@
-import { Typography } from '@/shared/ui'
 import { cn } from '@/shared/lib/utils'
+import { Typography } from '@/shared/ui'
+
 import { LastOnlineTooltip } from './last-online-tooltip'
 
 type OnlineStatusProps = {

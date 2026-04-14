@@ -1,4 +1,5 @@
 import { Card, Container, HomeLink, Typography } from '@/shared/ui'
+
 import { UserInfo } from './user-info'
 
 export const ProfilePage = () => {

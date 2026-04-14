@@ -1,9 +1,12 @@
 'use client'
 
-import { AnimeVideoType, useAnimeTop } from '@/entities/anime'
+import { useAnimeTop } from '@/entities/anime'
 import { Typography } from '@/shared/ui'
+
 import { SelectTypeButtons } from './select-type-buttons'
 import { TopItems } from './top-items'
+
+import type { AnimeVideoType } from '@/entities/anime'
 
 type TopListProps = {
   activeType: AnimeVideoType
@@ -15,9 +18,17 @@ export const TopList = ({ activeType }: TopListProps) => {
   const topList = data?.response
 
   const getTypeName = () => {
-    if (activeType === 'tv') return 'сериалов'
-    if (activeType === 'movie') return 'фильмов'
-    if (activeType === 'ona') return 'ONA'
+    if (activeType === 'tv') {
+      return 'сериалов'
+    }
+
+    if (activeType === 'movie') {
+      return 'фильмов'
+    }
+
+    if (activeType === 'ona') {
+      return 'ONA'
+    }
   }
 
   return (

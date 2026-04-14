@@ -3,24 +3,18 @@ import { memo } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui'
 
 import type { VideoResponse } from '@/entities/anime/model/types'
-import type { ReactNode } from 'react'
+import type { Dispatch, ReactNode, SetStateAction } from 'react'
 
 type EpisodeTabsProps = {
   videos: VideoResponse[]
   activeEpisode: string
-  setActiveEpisode: (episode: string) => void
+  setActiveEpisode: Dispatch<SetStateAction<string>>
   children: ReactNode
 }
 export const EpisodeTabs = memo(
   ({ videos, activeEpisode, setActiveEpisode, children }: EpisodeTabsProps) => {
-    const handleActiveEpisodeSet = (episode: string) => {
-      setActiveEpisode(episode)
-    }
-
-    console.log(videos)
-
     return (
-      <Tabs className={'w-full'} value={activeEpisode} onValueChange={handleActiveEpisodeSet}>
+      <Tabs className={'w-full'} value={activeEpisode} onValueChange={setActiveEpisode}>
         <TabsList className={'mb-6 flex flex-wrap justify-start gap-2 bg-transparent p-0 h-auto'}>
           {videos.map(video => (
             <TabsTrigger

@@ -1,18 +1,19 @@
 'use client'
 
+import { useMe } from '@/entities/user'
 import { SearchAnime } from '@/features/search-anime'
 import { SwitchTheme } from '@/features/switch-theme'
 import { Container, NavBar } from '@/shared/ui'
+import { AuthLink } from '@/widgets/header/ui/auth-link'
+import { UserMenu } from '@/widgets/header/ui/user-menu'
 
 import { HeaderLogo } from './header-logo'
-import { useMe } from '@/entities/user'
-import { UserMenu } from '@/widgets/header/ui/user-menu'
-import { AuthLink } from '@/widgets/header/ui/auth-link'
 
 export const Header = () => {
   const { data, isLoading, error } = useMe()
 
   const userData = data?.response
+
   const isAuth = !error
 
   return (

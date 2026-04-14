@@ -1,5 +1,6 @@
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui'
 import { CircleQuestionMarkIcon } from 'lucide-react'
+
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui'
 
 type LastOnlineTooltipProps = {
   lastOnlineDate: string

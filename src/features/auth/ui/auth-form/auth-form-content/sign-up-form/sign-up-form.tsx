@@ -2,16 +2,15 @@
 
 import HCaptcha from '@hcaptcha/react-hcaptcha'
 import { zodResolver } from '@hookform/resolvers/zod'
-import type { ComponentProps } from 'react'
-import type { SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
 
-import { signUpSchema } from '@/features/auth/model'
+import { signUpSchema, useCaptcha, useAuthForm } from '@/features/auth/model'
 import { ControlledInput } from '@/shared/forms'
 import { Button } from '@/shared/ui'
-import { useCaptcha, useAuthForm } from '@/features/auth/model'
 
 import type { SignUpFormValues } from '@/features/auth/model'
+import type { ComponentProps } from 'react'
+import type { SubmitHandler } from 'react-hook-form'
 
 type SignUpFormProps = Omit<ComponentProps<'form'>, 'onSubmit'> & {
   onSubmit?: SubmitHandler<SignUpFormValues>
@@ -20,6 +19,7 @@ type SignUpFormProps = Omit<ComponentProps<'form'>, 'onSubmit'> & {
 export const SignUpForm = ({ onSubmit: onSubmitFormProps, ...rest }: SignUpFormProps) => {
   const { captchaToken, captchaRef, handleVerify, handleExpire, resetCaptcha, validateCaptcha } =
     useCaptcha()
+
   const { handleSignUp } = useAuthForm()
 
   const {
@@ -38,6 +38,7 @@ export const SignUpForm = ({ onSubmit: onSubmitFormProps, ...rest }: SignUpFormP
   const onSubmit: typeof onSubmitFormProps = (data, e) => {
     if (onSubmitFormProps) {
       onSubmitFormProps(data, e)
+
       return
     }
 

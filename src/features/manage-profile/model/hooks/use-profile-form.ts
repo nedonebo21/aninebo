@@ -1,14 +1,19 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+
 import { useMe } from '@/entities/user'
 import { useChangeUserNickname, useChangeProfile } from '@/features/manage-profile/api'
-import type { ChangeProfileFormValues } from '../change-profile-schema'
+
 import { changeProfileSchema } from '../change-profile-schema'
-import { zodResolver } from '@hookform/resolvers/zod'
+
+import type { ChangeProfileFormValues } from '../change-profile-schema'
 
 export const useProfileForm = () => {
   const { data: userData } = useMe()
+
   const { mutate: changeUserNickname } = useChangeUserNickname()
+
   const { mutate: changeUserInfo } = useChangeProfile()
 
   const {
@@ -35,7 +40,10 @@ export const useProfileForm = () => {
 
   const handleProfileUpdate = (data: ChangeProfileFormValues) => {
     const id = userData?.response.id
-    if (!id) return
+
+    if (!id) {
+      return
+    }
 
     if (dirtyFields.nickname) {
       changeUserNickname({ id, nickname: data.nickname ?? '' })

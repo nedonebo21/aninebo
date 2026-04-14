@@ -1,7 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+
+import type { NextRequest } from 'next/server'
 
 async function proxyRequest(req: NextRequest) {
   const path = req.nextUrl.pathname.replace('/api/yani/', '')
+
   const url = `https://api.yani.tv/${path}${req.nextUrl.search}`
 
   const res = await fetch(url, {
@@ -18,6 +21,7 @@ async function proxyRequest(req: NextRequest) {
   const text = await res.text()
 
   let body: object | null = null
+
   try {
     body = JSON.parse(text)
   } catch {
@@ -27,6 +31,7 @@ async function proxyRequest(req: NextRequest) {
   const response = NextResponse.json(body, { status: res.status })
 
   const cookies = res.headers.getSetCookie()
+
   cookies.forEach(cookie => {
     response.headers.append('Set-Cookie', cookie)
   })

@@ -3,11 +3,12 @@
 import NextTopLoader from 'nextjs-toploader'
 import { Toaster } from 'react-hot-toast'
 
+import { TooltipProvider } from '@/shared/ui'
+
 import { QueryProvider } from './query-provider'
 import { ThemeProvider } from './theme-provider'
 
 import type { ReactNode } from 'react'
-import { TooltipProvider } from '@/shared/ui'
 
 export const Providers = ({ children }: { children: ReactNode }) => {
   return (

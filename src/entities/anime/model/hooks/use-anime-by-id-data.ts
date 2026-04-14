@@ -1,4 +1,5 @@
 import { useAnimeById } from '@/entities/anime'
+
 import type { AnimeByIdResponse } from '@/entities/anime'
 
 type ReturnProps = {

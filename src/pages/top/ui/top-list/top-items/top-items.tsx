@@ -1,6 +1,8 @@
-import { Anime } from '@/entities/anime'
-import { TopItem } from './top-item'
 import { AnimePreviewCardSkeleton } from '@/shared/ui'
+
+import { TopItem } from './top-item'
+
+import type { Anime } from '@/entities/anime'
 
 type CatalogItemsProps = {
   topList?: Anime[]

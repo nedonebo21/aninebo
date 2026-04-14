@@ -1,9 +1,9 @@
+import { getAnimePoster } from '@/pages/anime/model/lib'
 import { AnimeActions } from '@/pages/anime/ui/anime-hero-section/anime-actions'
 import { AnimeInfo } from '@/pages/anime/ui/anime-hero-section/anime-info/anime-info'
-import { getAnimePoster } from '@/pages/anime/model/lib'
+import { AnimeImgSkeleton } from '@/shared/ui'
 
 import type { AnimeByIdResponse } from '@/entities/anime'
-import { AnimeImgSkeleton } from '@/shared/ui'
 
 type AnimeHeroSectionProps = {
   anime?: AnimeByIdResponse

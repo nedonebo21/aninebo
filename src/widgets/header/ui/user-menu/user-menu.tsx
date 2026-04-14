@@ -1,3 +1,6 @@
+import Link from 'next/link'
+
+import { LogoutButton } from '@/features/auth'
 import {
   Button,
   DropdownMenu,
@@ -9,8 +12,6 @@ import {
   UserAvatar,
   UserAvatarSkeleton,
 } from '@/shared/ui'
-import Link from 'next/link'
-import { LogoutButton } from '@/features/auth'
 
 type UserMenuProps = {
   id?: number

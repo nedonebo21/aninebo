@@ -1,3 +1,4 @@
+import { ControlledInput, ControlledTextarea } from '@/shared/forms'
 import {
   DialogClose,
   DialogFooter,
@@ -5,11 +6,11 @@ import {
   DialogTitle,
   DialogDescription,
   Typography,
+  Button,
 } from '@/shared/ui'
-import { Button } from '@/shared/ui'
-import { ControlledInput, ControlledTextarea } from '@/shared/forms'
-import { Control, FieldErrors } from 'react-hook-form'
-import { ChangeProfileFormValues } from '@/features/manage-profile/model'
+
+import type { ChangeProfileFormValues } from '@/features/manage-profile/model'
+import type { Control, FieldErrors } from 'react-hook-form'
 
 type ProfileFormContentProps = {
   control: Control<ChangeProfileFormValues>
@@ -23,7 +24,7 @@ export const ProfileFormContent = ({ control, errors }: ProfileFormContentProps)
       <DialogHeader className={'mb-4'}>
         <DialogTitle>Редактирование профиля</DialogTitle>
         <DialogDescription>
-          Измените информацию в полях. Нажмите "Сохранить", чтобы применить изменения.
+          Измените информацию в полях. Нажмите &quot;Сохранить&quot;, чтобы применить изменения.
         </DialogDescription>
       </DialogHeader>
       <div className={'flex flex-col gap-2 mb-4'}>

@@ -1,6 +1,8 @@
 import { Container, HomeLink } from '@/shared/ui'
+
 import { TopList } from './top-list'
-import { AnimeVideoType } from '@/entities/anime'
+
+import type { AnimeVideoType } from '@/entities/anime'
 
 type TopPageProps = {
   type: AnimeVideoType

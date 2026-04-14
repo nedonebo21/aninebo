@@ -1,6 +1,8 @@
-import { TopPage } from '@/pages/top'
-import { AnimeVideoType } from '@/entities/anime/model/types'
 import { redirect } from 'next/navigation'
+
+import { TopPage } from '@/pages/top'
+
+import type { AnimeVideoType } from '@/entities/anime/model/types'
 
 const VALID_TYPES: AnimeVideoType[] = ['tv', 'movie', 'ona']
 

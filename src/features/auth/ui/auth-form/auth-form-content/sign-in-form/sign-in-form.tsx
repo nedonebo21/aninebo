@@ -1,14 +1,14 @@
 import HCaptcha from '@hcaptcha/react-hcaptcha'
 import { zodResolver } from '@hookform/resolvers/zod'
-import type { ComponentProps } from 'react'
-import type { SubmitHandler } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
 
-import type { SignInFormValues } from '@/features/auth/model'
-import { signInSchema } from '@/features/auth/model'
+import { signInSchema, useCaptcha, useAuthForm } from '@/features/auth/model'
 import { ControlledInput } from '@/shared/forms'
 import { Button } from '@/shared/ui'
-import { useCaptcha, useAuthForm } from '@/features/auth/model'
+
+import type { SignInFormValues } from '@/features/auth/model'
+import type { ComponentProps } from 'react'
+import type { SubmitHandler } from 'react-hook-form'
 
 type SignInFormProps = Omit<ComponentProps<'form'>, 'onSubmit'> & {
   onSubmit?: SubmitHandler<SignInFormValues>
@@ -17,6 +17,7 @@ type SignInFormProps = Omit<ComponentProps<'form'>, 'onSubmit'> & {
 export const SignInForm = ({ onSubmit: onSubmitFormProps, ...rest }: SignInFormProps) => {
   const { captchaToken, captchaRef, handleVerify, handleExpire, resetCaptcha, validateCaptcha } =
     useCaptcha()
+
   const { handleSignIn } = useAuthForm()
 
   const {
@@ -34,6 +35,7 @@ export const SignInForm = ({ onSubmit: onSubmitFormProps, ...rest }: SignInFormP
   const onSubmit: typeof onSubmitFormProps = (data, e) => {
     if (onSubmitFormProps) {
       onSubmitFormProps(data, e)
+
       return
     }
 

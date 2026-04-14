@@ -1,12 +1,12 @@
 import { EyeIcon } from 'lucide-react'
 
+import { hasOtherTitles } from '@/pages/anime/model/lib'
 import {
   AnimeOtherTitlesSkeleton,
   AnimeTitleSkeleton,
   AnimeViewsSkeleton,
   Typography,
 } from '@/shared/ui'
-import { hasOtherTitles } from '@/pages/anime/model/lib'
 
 type AnimeHeaderProps = {
   views?: number

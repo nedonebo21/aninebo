@@ -2,11 +2,12 @@ import { EpisodeItem } from '@/pages/anime/ui/anime-video-section/episodes/episo
 import { EpisodeTabs } from '@/pages/anime/ui/anime-video-section/episodes/episode-tabs'
 
 import type { VideoResponse } from '@/entities/anime/model/types'
+import type { Dispatch, SetStateAction } from 'react'
 
 type EpisodesProps = {
   filteredVideos: VideoResponse[]
   currentActiveEpisode: string
-  setActiveEpisode: (episode: string) => void
+  setActiveEpisode: Dispatch<SetStateAction<string>>
 }
 export const Episodes = ({
   filteredVideos,
@@ -15,15 +16,11 @@ export const Episodes = ({
 }: EpisodesProps) => {
   const selectedVideo = filteredVideos.find(v => v.number === currentActiveEpisode)
 
-  const handleActiveEpisodeSet = (episode: string) => {
-    setActiveEpisode(episode)
-  }
-
   return (
     <EpisodeTabs
       videos={filteredVideos}
       activeEpisode={currentActiveEpisode}
-      setActiveEpisode={handleActiveEpisodeSet}
+      setActiveEpisode={setActiveEpisode}
     >
       <EpisodeItem selectedVideo={selectedVideo} />
     </EpisodeTabs>

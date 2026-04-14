@@ -2,11 +2,13 @@ import { Search, XIcon } from 'lucide-react'
 
 import { Input } from '@/shared/ui'
 
+import type { Dispatch, SetStateAction } from 'react'
+
 type SearchInputProps = {
   search: string
   isCleared: boolean
   onFocus: () => void
-  onChange: (value: string) => void
+  onChange: Dispatch<SetStateAction<string>>
   onClear: () => void
 }
 

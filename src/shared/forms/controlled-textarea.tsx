@@ -1,5 +1,8 @@
-import { Control, FieldValues, useController, UseControllerProps } from 'react-hook-form'
-import { ClearButton, Input, RequiredSymbol, Textarea, Typography } from '@/shared/ui'
+import { useController } from 'react-hook-form'
+
+import { ClearButton, RequiredSymbol, Textarea, Typography } from '@/shared/ui'
+
+import type { Control, FieldValues, UseControllerProps } from 'react-hook-form'
 
 type ControlledTextareaProps<T extends FieldValues> = {
   label?: string

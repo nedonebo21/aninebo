@@ -1,11 +1,13 @@
-import { Button, Dialog, DialogContent, DialogTrigger } from '@/shared/ui'
 import { SettingsIcon } from 'lucide-react'
-import { SubmitHandler } from 'react-hook-form'
-import { ComponentProps } from 'react'
 
 import { useProfileForm } from '@/features/manage-profile/model'
+import { Button, Dialog, DialogContent, DialogTrigger } from '@/shared/ui'
+
 import { ProfileFormContent } from './profile-form-content'
-import { ChangeProfileFormValues } from '@/features/manage-profile/model'
+
+import type { ChangeProfileFormValues } from '@/features/manage-profile/model'
+import type { ComponentProps } from 'react'
+import type { SubmitHandler } from 'react-hook-form'
 
 type ChangeProfileProps = Omit<ComponentProps<'form'>, 'onSubmit'> & {
   onSubmit?: SubmitHandler<ChangeProfileFormValues>
@@ -17,6 +19,7 @@ export const EditProfileDialog = ({ onSubmit: onSubmitFormProps, ...rest }: Chan
   const onSubmit: typeof onSubmitFormProps = (data, e) => {
     if (onSubmitFormProps) {
       onSubmitFormProps(data, e)
+
       return
     }
 

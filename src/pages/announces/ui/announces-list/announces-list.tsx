@@ -7,6 +7,7 @@ import { AnimePreviewCard, AnimePreviewCardSkeleton, Typography } from '@/shared
 
 export const AnnouncesList = () => {
   const { data, isLoading } = useAnimeTop({ status: 'announce' })
+
   const anonsList = data?.response
 
   return (

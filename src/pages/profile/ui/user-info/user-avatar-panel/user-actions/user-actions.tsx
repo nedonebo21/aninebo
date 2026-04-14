@@ -1,6 +1,7 @@
-import { Button } from '@/shared/ui'
 import { ImageUpIcon } from 'lucide-react'
+
 import { EditProfileDialog } from '@/features/manage-profile'
+import { Button } from '@/shared/ui'
 
 export const UserActions = () => {
   return (

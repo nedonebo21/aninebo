@@ -1,6 +1,8 @@
-import { SearchAnimeResponse } from '@/features/search-anime/model'
-import { AnimePreviewCard, AnimePreviewCardSkeleton, Typography } from '@/shared/ui'
 import { EyeIcon, StarIcon } from 'lucide-react'
+
+import { AnimePreviewCard, AnimePreviewCardSkeleton, Typography } from '@/shared/ui'
+
+import type { SearchAnimeResponse } from '@/features/search-anime/model'
 
 type SearchedAnimeProps = {
   isLoading: boolean

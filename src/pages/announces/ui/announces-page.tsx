@@ -1,5 +1,6 @@
-import { AnnouncesList } from './announces-list'
 import { Container, HomeLink } from '@/shared/ui'
+
+import { AnnouncesList } from './announces-list'
 
 export const AnnouncesPage = () => {
   return (

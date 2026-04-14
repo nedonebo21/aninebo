@@ -1,8 +1,10 @@
 'use client'
 
-import { axiosInstance } from '@/shared/api'
-import { UserProfile } from '@/entities/user/model/types'
 import { useQuery } from '@tanstack/react-query'
+
+import { axiosInstance } from '@/shared/api'
+
+import type { UserProfile } from '@/entities/user/model/types'
 
 const getMe = async (): Promise<UserProfile> => {
   return (await axiosInstance.get<UserProfile>('/profile')).data

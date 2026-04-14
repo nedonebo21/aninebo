@@ -1,13 +1,17 @@
-import { ANIME_TYPES, AnimeVideoType } from '@/entities/anime'
-import { Button } from '@/shared/ui'
-import { cn } from '@/shared/lib/utils'
 import { useRouter } from 'next/navigation'
+
+import { ANIME_TYPES } from '@/entities/anime'
+import { cn } from '@/shared/lib/utils'
+import { Button } from '@/shared/ui'
+
+import type { AnimeVideoType } from '@/entities/anime'
 
 type SelectTypeButtonProps = {
   activeType: AnimeVideoType
 }
 export const SelectTypeButtons = ({ activeType }: SelectTypeButtonProps) => {
   const router = useRouter()
+
   return (
     <div className={'flex gap-1 items-center mb-2'}>
       {ANIME_TYPES.map(({ label, value }) => (

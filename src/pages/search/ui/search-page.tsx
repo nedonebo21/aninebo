@@ -1,4 +1,5 @@
 ﻿import { Container, HomeLink } from '@/shared/ui'
+
 import { SearchedAnimeList } from './searched-anime-list'
 
 export type SearchPageProps = {

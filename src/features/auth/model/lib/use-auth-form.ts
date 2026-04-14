@@ -1,8 +1,9 @@
-import { useRouter } from 'next/navigation'
 import { useQueryClient } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
+
+import { useLogin, useRegister } from '@/features/auth/api'
 
 import type { SignInFormValues, SignUpFormValues } from '@/features/auth/model'
-import { useLogin, useRegister } from '@/features/auth/api'
 
 type AuthFormOptions = {
   captchaToken: string | null
@@ -11,8 +12,11 @@ type AuthFormOptions = {
 
 export const useAuthForm = () => {
   const router = useRouter()
+
   const queryClient = useQueryClient()
+
   const { mutate: loginUser } = useLogin()
+
   const { mutate: registerUser } = useRegister()
 
   const handleSignIn = (data: SignInFormValues, options?: AuthFormOptions) => {

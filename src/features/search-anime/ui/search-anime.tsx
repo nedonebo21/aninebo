@@ -1,8 +1,9 @@
 'use client'
 
-import { SearchSuggestions } from './search-suggestions'
 import { useSearchAnime } from '@/features/search-anime/model'
+
 import { SearchInput } from './search-input'
+import { SearchSuggestions } from './search-suggestions'
 
 export const SearchAnime = () => {
   const {

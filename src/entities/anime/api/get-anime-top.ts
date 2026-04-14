@@ -1,6 +1,8 @@
-import { axiosInstance } from '@/shared/api'
-import { AnimeResponse, AnimeVideoType } from '@/entities/anime/model/types'
 import { useQuery } from '@tanstack/react-query'
+
+import { axiosInstance } from '@/shared/api'
+
+import type { AnimeResponse, AnimeVideoType } from '@/entities/anime/model/types'
 
 type AnimeCatalogOptions = {
   types?: AnimeVideoType

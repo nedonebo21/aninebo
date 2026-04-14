@@ -1,11 +1,10 @@
 'use client'
 
+import { useAnimeByIdData } from '@/entities/anime'
 import { AnimeHeader } from '@/pages/anime/ui/anime-header'
 import { AnimeHeroSection } from '@/pages/anime/ui/anime-hero-section'
 import { AnimeVideoSection } from '@/pages/anime/ui/anime-video-section'
 import { Card, Container, HomeLink } from '@/shared/ui'
-
-import { useAnimeByIdData } from '@/entities/anime'
 
 type AnimePageProps = {
   animeId: string

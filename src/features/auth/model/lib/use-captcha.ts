@@ -1,9 +1,11 @@
-import HCaptcha from '@hcaptcha/react-hcaptcha'
 import { useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 
+import type HCaptcha from '@hcaptcha/react-hcaptcha'
+
 export const useCaptcha = () => {
   const [captchaToken, setCaptchaToken] = useState<string | null>(null)
+
   const captchaRef = useRef<HCaptcha>(null)
 
   const handleVerify = (token: string) => {
@@ -22,8 +24,10 @@ export const useCaptcha = () => {
   const validateCaptcha = (): boolean => {
     if (!captchaToken) {
       toast.error('Пройдите капчу')
+
       return false
     }
+
     return true
   }
 

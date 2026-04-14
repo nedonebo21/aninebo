@@ -7,6 +7,7 @@ type SearchRoutePageProps = {
 
 export default async function SearchRoutePage({ searchParams }: SearchRoutePageProps) {
   const resolvedSearchParams = await searchParams
+
   const searchWord = getSearchWord(resolvedSearchParams.word).replaceAll('+', ' ')
 
   return <SearchPage searchWord={searchWord} />

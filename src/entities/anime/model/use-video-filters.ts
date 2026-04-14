@@ -3,17 +3,18 @@
 import { useMemo, useState } from 'react'
 
 import type { VideoResponse } from '@/entities/anime/model/types'
+import type { Dispatch, SetStateAction } from 'react'
 
 type ReturnedProps = {
   dubs: string[]
   selectedDub: string
-  setSelectedDub: (dub: string) => void
+  setSelectedDub: Dispatch<SetStateAction<string>>
   players: string[]
   selectedPlayer: string
-  setSelectedPlayer: (player: string) => void
+  setSelectedPlayer: Dispatch<SetStateAction<string>>
   filteredVideos: VideoResponse[]
   currentActiveEpisode: string
-  setActiveEpisode: (episode: string) => void
+  setActiveEpisode: Dispatch<SetStateAction<string>>
 }
 
 export const useVideoFilters = (videos: VideoResponse[]): ReturnedProps => {

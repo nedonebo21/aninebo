@@ -1,6 +1,6 @@
-import { UserActions } from './user-actions'
 import { AvatarWithCircle } from './avatar-with-circle'
 import { OnlineStatus } from './online-status'
+import { UserActions } from './user-actions'
 
 type UserAvatarPanelProps = {
   lastOnlineDate: string

@@ -1,6 +1,7 @@
-import { axiosInstance } from '@/shared/api'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
+
+import { axiosInstance } from '@/shared/api'
 
 const changeUserNickname = async ({ id, nickname }: { id: number; nickname?: string }) => {
   return (
@@ -12,6 +13,7 @@ const changeUserNickname = async ({ id, nickname }: { id: number; nickname?: str
 
 export function useChangeUserNickname() {
   const queryClient = useQueryClient()
+
   return useMutation({
     mutationFn: changeUserNickname,
     onSuccess: async () => {

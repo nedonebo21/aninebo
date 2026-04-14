@@ -36,7 +36,7 @@ export const SearchSuggestions = ({
           }
           onClick={onItemClick}
         >
-          <div className="flex items-center gap-2">
+          <div className='flex items-center gap-2'>
             <img src={anime.poster.small} alt={anime.title} className={'rounded-sm h-8'} />
             <Typography as={'span'} variant={'bodyNormal'} className={'font-medium'}>
               {anime.title}

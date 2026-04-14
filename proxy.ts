@@ -1,9 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+
+import type { NextRequest } from 'next/server'
 
 export function proxy(req: NextRequest) {
-  if (req.nextUrl.pathname.startsWith('/api/yani')) return NextResponse.next()
+  if (req.nextUrl.pathname.startsWith('/api/yani')) {return NextResponse.next()}
 
   const token = req.cookies.get('yummy_token')?.value
+
   const isAuthPage = req.nextUrl.pathname === '/auth'
 
   if (isAuthPage && token) {

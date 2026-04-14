@@ -1,6 +1,7 @@
-import { axiosInstance } from '@/shared/api'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
+
+import { axiosInstance } from '@/shared/api'
 
 const logout = async () => {
   try {
@@ -12,6 +13,7 @@ const logout = async () => {
 
 export function useLogout() {
   const queryClient = useQueryClient()
+
   return useMutation({
     mutationFn: logout,
     onSuccess: () => {

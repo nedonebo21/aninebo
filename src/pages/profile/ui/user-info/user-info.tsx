@@ -1,8 +1,9 @@
 'use client'
 
 import { useUserInfo } from '@/entities/user'
-import { UserDetails } from './user-details'
+
 import { UserAvatarPanel } from './user-avatar-panel'
+import { UserDetails } from './user-details'
 
 export const UserInfo = () => {
   const userInfo = useUserInfo()

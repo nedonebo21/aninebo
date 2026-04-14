@@ -1,13 +1,16 @@
-import { useEffect } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
 
 import { useSearchData } from './use-search-data'
 import { useSearchState } from './use-search-state'
 
 export const useSearchAnime = () => {
   const router = useRouter()
+
   const pathname = usePathname()
+
   const searchParams = useSearchParams()
+
   const {
     search,
     focused,
@@ -24,6 +27,7 @@ export const useSearchAnime = () => {
   useEffect(() => {
     if (pathname !== '/search') {
       handleClear()
+
       return
     }
 
@@ -31,6 +35,7 @@ export const useSearchAnime = () => {
 
     if (!searchWordFromQuery) {
       handleClear()
+
       return
     }
 
@@ -45,6 +50,7 @@ export const useSearchAnime = () => {
     }
 
     const params = new URLSearchParams()
+
     params.set('word', searchValue)
 
     handleBlur()

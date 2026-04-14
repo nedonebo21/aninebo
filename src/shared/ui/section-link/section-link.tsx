@@ -1,8 +1,9 @@
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
-import type { ReactNode } from 'react'
 
 import { Typography } from '@/shared/ui'
+
+import type { ReactNode } from 'react'
 
 type SectionLinkProps = {
   children: ReactNode

@@ -1,8 +1,8 @@
 import { Card, Typography } from '@/shared/ui'
 
+import { AuthFormToggle } from './auth-form-toggle'
 import { SignInForm } from './sign-in-form'
 import { SignUpForm } from './sign-up-form'
-import { AuthFormToggle } from './auth-form-toggle'
 
 type AuthFormContentProps = {
   isLogin: boolean
