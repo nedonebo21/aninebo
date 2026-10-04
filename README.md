@@ -1,4 +1,4 @@
-# Animebo
+# Aninebo
 
 Пет-проект для практики Next.js, TanStack Query и работы с внешними API. Фронтенд для просмотра аниме
 
